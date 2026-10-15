@@ -1,0 +1,12 @@
+.git
+.env
+.env.*
+!.env.example
+**/node_modules
+**/dist
+ingest-drop
+docs
+*.md
+*.log
+6235172_170_-1_payload.json
+edi_workato.docx

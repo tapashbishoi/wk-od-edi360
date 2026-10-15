@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import express from 'express';
 import 'express-async-errors';
 import cors from 'cors';
@@ -49,6 +51,15 @@ export function createApp() {
   app.use('/api/tenants/:tenantId/chat', chatRoutes);
   app.use('/api/tenants/:tenantId/actions', actionsRoutes);
   app.use('/api/tenants/:tenantId', tenantRoutes);
+
+  app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));
+
+  // Production image: serve the built site, and the page itself for any other address so a refresh on /transactions works
+  const indexHtml = env.FRONTEND_DIST ? path.join(env.FRONTEND_DIST, 'index.html') : '';
+  if (indexHtml && fs.existsSync(indexHtml)) {
+    app.use(express.static(env.FRONTEND_DIST, { index: false, maxAge: '1h' }));
+    app.use((req, res, next) => (req.method === 'GET' || req.method === 'HEAD' ? res.sendFile(indexHtml) : next()));
+  }
 
   app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
 

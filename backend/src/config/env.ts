@@ -13,6 +13,9 @@ export const env = {
   PORT: parseInt(process.env.PORT || '3100'),
   PORTAL_URL: process.env.PORTAL_URL || 'http://localhost:5174',
 
+  /** Folder holding the built frontend. Set in the container image so one process serves the site and the API. Unset in development (Vite serves the site). */
+  FRONTEND_DIST: process.env.FRONTEND_DIST || '',
+
   DATABASE_URL: process.env.DATABASE_URL!,
   DB_POOL_SIZE: parseInt(process.env.DB_POOL_SIZE || '10'),
 
