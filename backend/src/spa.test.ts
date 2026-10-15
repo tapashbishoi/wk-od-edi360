@@ -45,6 +45,11 @@ describe('serving the built frontend (production image)', () => {
     expect(await r.json()).toEqual({ error: 'Not found' });
   });
 
+  it('answers a missing file with a 404, not the page', async () => {
+    const r = await fetch(`${base}/logos/missing.svg`);
+    expect(r.status).toBe(404);
+  });
+
   it('does not answer a POST to a page address with the page', async () => {
     const r = await fetch(`${base}/transactions`, { method: 'POST' });
     expect(r.status).toBe(404);

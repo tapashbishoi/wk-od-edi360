@@ -58,7 +58,8 @@ export function createApp() {
   const indexHtml = env.FRONTEND_DIST ? path.join(env.FRONTEND_DIST, 'index.html') : '';
   if (indexHtml && fs.existsSync(indexHtml)) {
     app.use(express.static(env.FRONTEND_DIST, { index: false, maxAge: '1h' }));
-    app.use((req, res, next) => (req.method === 'GET' || req.method === 'HEAD' ? res.sendFile(indexHtml) : next()));
+    // A missing file (an address ending in .svg, .ico, .js...) is a real 404; only page addresses get the page
+    app.use((req, res, next) => ((req.method === 'GET' || req.method === 'HEAD') && !path.extname(req.path) ? res.sendFile(indexHtml) : next()));
   }
 
   app.use((_req, res) => res.status(404).json({ error: 'Not found' }));
