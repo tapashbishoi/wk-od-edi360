@@ -12,6 +12,7 @@ import { useAuthStore } from '@/stores/authStore';
 import PartnersPage from '@/pages/PartnersPage';
 import TicketsPage from '@/pages/TicketsPage';
 import GeneratorPage from '@/pages/GeneratorPage';
+import HelpPage from '@/pages/HelpPage';
 import TenantsPage from '@/pages/admin/TenantsPage';
 import TenantDetailPage from '@/pages/admin/TenantDetailPage';
 
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/tickets/:id" element={<TicketsPage />} />
             <Route path="/ack-rules" element={<Navigate to="/partners" replace />} />
             <Route path="/generator" element={<GeneratorPage />} />
+            <Route path="/help" element={<HelpPage />} />
             <Route path="/admin/api" element={<AdminOnly><Suspense fallback={null}><ApiDocsPage /></Suspense></AdminOnly>} />
             <Route path="/admin/tenants" element={<TenantsPage />} />
             <Route path="/admin/tenants/:tenantId" element={<TenantDetailPage />} />

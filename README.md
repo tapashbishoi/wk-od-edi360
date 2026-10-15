@@ -292,3 +292,11 @@ shows tokens only and is flagged "not priced" rather than $0. Add prices with `C
 - Tenant settings > AI model: that organisation's own last 30 days.
 - gpt-5 models are asked for minimal thinking (`reasoning_effort: minimal`; o-series `low`), with a retry
   without it if the model rejects the setting, and 4096 output tokens so thinking cannot crowd out the answer.
+
+## User guide (Help)
+
+**Help** in the top bar (every signed-in user) opens the EDI360 user guide and cookbook as a PDF. The PDF is not a public
+file: `GET /api/help/user-guide.pdf` needs a signed-in session, and the Help page fetches it with that session, then opens
+it in a new tab or saves it. The source is `backend/assets/guide/EDI360-User-Guide.html`; after editing it, rebuild the PDF
+beside it (Chrome: `chrome --headless=new --no-pdf-header-footer --print-to-pdf=EDI360-User-Guide.pdf EDI360-User-Guide.html`)
+and redeploy. The Dockerfile copies `backend/assets` into the image.

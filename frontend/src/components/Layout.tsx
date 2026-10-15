@@ -32,6 +32,7 @@ export default function Layout() {
               {user?.role !== 'auditor' && <NavLink to="/tickets" className={link}>Tickets</NavLink>}
               <NavLink to="/recipes" className={link}>Recipes</NavLink>
               {(isPlatform || user?.role === 'customer_admin' || user?.role === 'support') && <NavLink to="/generator" className={link}>Test files</NavLink>}
+              <NavLink to="/help" className={link}>Help</NavLink>
               {isPlatform && <NavLink to="/admin/tenants" className={link}>Tenants</NavLink>}
               {isPlatform && <NavLink to="/admin/api" className={link}>API &amp; health</NavLink>}
               {user?.role === 'customer_admin' && user.tenantId && (

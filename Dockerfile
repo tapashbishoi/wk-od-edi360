@@ -24,6 +24,8 @@ RUN npm ci --omit=dev
 COPY --from=backend /backend/dist ./dist
 # tsc leaves the .sql files behind; the migration runner and the health check read them next to the compiled code
 COPY backend/src/db/migrations ./dist/db/migrations
+# The user guide PDF the Help page serves (read relative to the compiled code)
+COPY backend/assets ./assets
 COPY --from=frontend /frontend/dist /app/public
 USER node
 EXPOSE 3000

@@ -53,6 +53,7 @@ export const ENDPOINTS: Endpoint[] = [
   { m: 'post', p: '/auth/login', tag: 'Auth', s: 'Sign in', d: 'Returns a bearer token. 401 for any bad email/password; 403 (after a correct password) if the organisation is suspended.', auth: 'none', body: { email: 'user@example.com', password: 'string' } },
   { m: 'get', p: '/auth/me', tag: 'Auth', s: 'The signed-in user, their tenant and My View', roles: 'any signed-in user' },
   { m: 'put', p: '/auth/me/saved-view', tag: 'Auth', s: 'Save My View', d: 'Only ever the caller\'s own view. Malformed pairs are dropped.', roles: 'any signed-in user', body: { savedView: [{ partner: 'ISAID', types: ['850'] }] } },
+  { m: 'get', p: '/help/user-guide.pdf', tag: 'Help', s: 'The EDI360 user guide (PDF)', d: 'Streams the guide shown on the Help page.', roles: 'any signed-in user' },
   { m: 'get', p: '/auth/invite/{token}', tag: 'Auth', s: 'What an invitation link is for', d: 'Public. Returns no secrets; 404 for any invalid, used or expired token.', auth: 'none' },
   { m: 'post', p: '/auth/accept-invite', tag: 'Auth', s: 'Accept an invitation and set a password', auth: 'none', body: { token: 'string', password: 'at least 10 characters' } },
 

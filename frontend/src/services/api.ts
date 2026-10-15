@@ -100,6 +100,10 @@ export const api = {
   },
 
   // ---- recipes
+  /** The user guide PDF, fetched with the signed-in session. */
+  async userGuide(): Promise<Blob> {
+    return (await client.get('/help/user-guide.pdf', { responseType: 'blob' })).data;
+  },
   async recipes(tenantId: number): Promise<Recipe[]> {
     return (await client.get(`${t(tenantId)}/recipes`)).data.recipes;
   },

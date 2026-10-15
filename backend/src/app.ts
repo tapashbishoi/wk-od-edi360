@@ -21,6 +21,7 @@ import ackRulesRoutes from './routes/ackRules.routes.js';
 import chatRoutes from './routes/chat.routes.js';
 import mcpRoutes from './routes/mcp.routes.js';
 import partnersRoutes from './routes/partners.routes.js';
+import helpRoutes from './routes/help.routes.js';
 
 /**
  * Builds the Express app. No side effects (no port, no workers) so tests can
@@ -44,6 +45,7 @@ export function createApp() {
   app.use('/api/admin/tenants/:tenantId/members', membersRoutes);
   app.use('/api/admin', adminRoutes);
   app.use('/api/platform', platformRoutes);
+  app.use('/api/help', helpRoutes);
   app.use('/api/tenants/:tenantId/generator', generatorRoutes);
   app.use('/api/tenants/:tenantId/partners', partnersRoutes);
   app.use('/api/tenants/:tenantId/alerts', alertsRoutes);

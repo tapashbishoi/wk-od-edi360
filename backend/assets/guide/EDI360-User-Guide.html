@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EDI360 User Guide and Cookbook</title>
+<style>
+  @page { size: A4; margin: 22mm 18mm 22mm 18mm; @bottom-center { content: "EDI360 User Guide  |  " counter(page); font: 9pt Arial, sans-serif; color: #6B7280; } }
+  @page :first { margin: 0; @bottom-center { content: ""; } }
+  :root { --navy:#12233F; --teal:#0B7A6B; --amber:#B7791F; --ink:#1F2937; --soft:#4A5568; --line:#DDD9CF; --paper:#F7F5F0; --mint:#E3F1EE; }
+  * { box-sizing: border-box; }
+  html { font-family: "Segoe UI", Arial, Helvetica, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; }
+  body { margin: 0; }
+  h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; }
+  h1 { font-size: 24pt; margin: 0 0 6mm; }
+  h2 { font-size: 15pt; margin: 8mm 0 3mm; padding-bottom: 1.5mm; border-bottom: 2px solid var(--teal); break-after: avoid; }
+  h3 { font-size: 12pt; margin: 6mm 0 2mm; break-after: avoid; }
+  h4 { font-size: 10.5pt; margin: 4mm 0 1mm; color: var(--teal); break-after: avoid; }
+  p { margin: 0 0 3mm; }
+  ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+  li { margin-bottom: 1mm; }
+  .chapter { break-before: page; }
+  .chapter > .num { font-size: 10pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 1mm; }
+  .chapter > h1 { margin-top: 0; }
+  .lead { font-size: 11.5pt; color: var(--soft); }
+
+  /* cover */
+  .cover { height: 297mm; width: 210mm; background: var(--navy); color: #F7F5F0; padding: 32mm 24mm; display: flex; flex-direction: column; justify-content: center; break-after: page; }
+  .cover .kicker { color: #F0B34A; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; font-size: 11pt; margin-bottom: 8mm; }
+  .cover h1 { color: #F7F5F0; font-size: 54pt; margin: 0; }
+  .cover h2 { color: #C9D4E5; border: 0; font-weight: 400; font-size: 18pt; margin: 4mm 0 0; padding: 0; }
+  .cover .sub { margin-top: 14mm; color: #C9D4E5; font-size: 12pt; max-width: 120mm; }
+  .cover .foot { position: absolute; left: 24mm; bottom: 20mm; color: #8FA3C2; font-size: 10pt; }
+  .pill { display: inline-block; background: #1E3A66; color: #F7F5F0; padding: 2mm 5mm; border-radius: 20px; margin-right: 3mm; font-size: 11pt; }
+
+  /* toc */
+  .toc { column-count: 2; column-gap: 12mm; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc li { list-style: none; margin-bottom: 1.5mm; break-inside: avoid; }
+  .toc ol { padding-left: 0; }
+  .toc .n { display: inline-block; width: 9mm; color: var(--teal); font-weight: 700; }
+
+  /* blocks */
+  table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; font-size: 9.5pt; break-inside: auto; }
+  th { background: var(--navy); color: #F7F5F0; text-align: left; padding: 2mm 3mm; font-weight: 600; }
+  td { padding: 2mm 3mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr { break-inside: avoid; }
+  tbody tr:nth-child(even) td { background: #FBFAF7; }
+  .note { background: var(--mint); border-left: 4px solid var(--teal); padding: 3mm 4mm; margin: 3mm 0 4mm; border-radius: 0 4px 4px 0; break-inside: avoid; }
+  .note b:first-child { color: var(--teal); }
+  .card { border: 1px solid var(--line); background: #FFFEFB; border-radius: 6px; padding: 3mm 4mm; margin: 2mm 0 4mm; break-inside: avoid; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+  .step { counter-increment: s; position: relative; padding-left: 9mm; margin-bottom: 2.2mm; }
+  .step::before { content: counter(s); position: absolute; left: 0; top: 0.3mm; width: 6mm; height: 6mm; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; font-size: 9pt; text-align: center; line-height: 6mm; }
+  .steps { counter-reset: s; margin: 2mm 0 4mm; }
+  .recipe { border: 1px solid var(--line); border-top: 4px solid var(--teal); border-radius: 6px; padding: 3mm 5mm 2mm; margin: 4mm 0 6mm; background: #FFFEFB; break-inside: avoid; }
+  .recipe h3 { margin-top: 0; }
+  .recipe .meta { font-size: 9pt; color: var(--soft); margin-bottom: 2mm; }
+  .badge { display: inline-block; padding: 0.4mm 2.5mm; border-radius: 10px; font-size: 8.5pt; font-weight: 600; }
+  .b-good { background: #DCFCE7; color: #166534; } .b-act { background: #DBEAFE; color: #1E40AF; }
+  .b-warn { background: #FEF3C7; color: #78350F; } .b-bad { background: #FEE2E2; color: #991B1B; } .b-none { background: #F3F4F6; color: #374151; }
+  .kbd { font-family: Consolas, monospace; background: #EEF1F4; border-radius: 3px; padding: 0 1.5mm; font-size: 9.5pt; }
+  figure { margin: 3mm 0 5mm; break-inside: avoid; } figcaption { font-size: 9pt; color: var(--soft); text-align: center; margin-top: 1mm; }
+  svg text { font-family: "Segoe UI", Arial, sans-serif; }
+  small { color: var(--soft); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="kicker">User Guide and Cookbook</div>
+  <h1>EDI360</h1>
+  <h2>The 360&deg; view of every EDI document</h2>
+  <div class="sub">How to follow documents between your trading partners, Orderful, Workato and your ERP, and how to handle the everyday jobs of EDI support and partner onboarding.</div>
+  <div style="margin-top:14mm"><span class="pill">Orderful</span><span class="pill">Workato</span><span class="pill">ERP</span></div>
+  <div class="foot">Provided by United Techno</div>
+</div>
+
+<!-- CONTENTS -->
+<h1>Contents</h1>
+<div class="toc"><ol>
+  <li><span class="n">1</span><a href="#c1">What EDI360 does</a></li>
+  <li><span class="n">2</span><a href="#c2">Roles and what each can do</a></li>
+  <li><span class="n">3</span><a href="#c3">Signing in and finding your way around</a></li>
+  <li><span class="n">4</span><a href="#c4">The Dashboard</a></li>
+  <li><span class="n">5</span><a href="#c5">Documents: search, filter and export</a></li>
+  <li><span class="n">6</span><a href="#c6">A single document in detail</a></li>
+  <li><span class="n">7</span><a href="#c7">Understanding statuses and 997s</a></li>
+  <li><span class="n">8</span><a href="#c8">Partners and expected EDI flows</a></li>
+  <li><span class="n">9</span><a href="#c9">997 reminder rules</a></li>
+  <li><span class="n">10</span><a href="#c10">Email alerts</a></li>
+  <li><span class="n">11</span><a href="#c11">Tickets in Jira or ServiceNow</a></li>
+  <li><span class="n">12</span><a href="#c12">Emailing a document report</a></li>
+  <li><span class="n">13</span><a href="#c13">The AI assistant and Explain EDI</a></li>
+  <li><span class="n">14</span><a href="#c14">Workato recipes</a></li>
+  <li><span class="n">15</span><a href="#c15">Test file generator</a></li>
+  <li><span class="n">16</span><a href="#c16">Settings for administrators</a></li>
+  <li><span class="n">17</span><a href="#c17">Onboarding and testing a new trading partner</a></li>
+  <li><span class="n">18</span><a href="#c18">Cookbook: step-by-step recipes</a></li>
+  <li><span class="n">19</span><a href="#c19">For platform administrators</a></li>
+  <li><span class="n">20</span><a href="#c20">Reference: document types and terms</a></li>
+</ol></div>
+
+<!-- 1 -->
+<div class="chapter" id="c1">
+<div class="num">Chapter 1</div>
+<h1>What EDI360 does</h1>
+<p class="lead">EDI360 shows every EDI document your business exchanges, from the moment it reaches Orderful to the moment it lands in your ERP, or the other way round, on one screen.</p>
+
+<p>When a trading partner sends you a purchase order, it passes through several systems. Without a single view, finding out where a document is means logging into each one. EDI360 collects the activity from Orderful and Workato and presents each document as a short journey with a clear status at every step.</p>
+
+<h3>How a document travels</h3>
+<figure>
+<svg viewBox="0 0 700 250" width="100%" role="img" aria-label="Inbound: Orderful to Workato to ERP. Outbound: ERP to Workato to Orderful.">
+  <text x="10" y="22" font-size="14" font-weight="700" fill="#0B7A6B">INBOUND (received from a partner)</text>
+  <g font-size="14" font-weight="600" fill="#12233F">
+    <rect x="10" y="34" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="100" y="68" text-anchor="middle">Orderful</text>
+    <rect x="260" y="34" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="350" y="68" text-anchor="middle">Workato</text>
+    <rect x="510" y="34" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="600" y="68" text-anchor="middle">Target (your ERP)</text>
+  </g>
+  <g stroke="#0B7A6B" stroke-width="3" fill="#0B7A6B"><line x1="192" y1="62" x2="252" y2="62"/><polygon points="258,62 248,56 248,68" stroke="none"/><line x1="442" y1="62" x2="502" y2="62"/><polygon points="508,62 498,56 498,68" stroke="none"/></g>
+  <text x="10" y="142" font-size="14" font-weight="700" fill="#0B7A6B">OUTBOUND (sent to a partner)</text>
+  <g font-size="14" font-weight="600" fill="#12233F">
+    <rect x="10" y="154" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="100" y="188" text-anchor="middle">Source (your ERP)</text>
+    <rect x="260" y="154" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="350" y="188" text-anchor="middle">Workato</text>
+    <rect x="510" y="154" width="180" height="56" rx="8" fill="#FFFEFB" stroke="#DDD9CF"/><text x="600" y="188" text-anchor="middle">Orderful</text>
+  </g>
+  <g stroke="#0B7A6B" stroke-width="3" fill="#0B7A6B"><line x1="192" y1="182" x2="252" y2="182"/><polygon points="258,182 248,176 248,188" stroke="none"/><line x1="442" y1="182" x2="502" y2="182"/><polygon points="508,182 498,176 498,188" stroke="none"/></g>
+</svg>
+<figcaption>Every document page shows these three blocks in business order. Each block has its own status.</figcaption>
+</figure>
+
+<h3>What you can do with it</h3>
+<div class="grid2">
+<div class="card"><b>Find and follow</b><br>Search any document by PO, shipment or invoice number, Orderful transaction id, control number or Workato job id and see exactly where it stands.</div>
+<div class="card"><b>Understand a failure</b><br>See which step stopped, why, and open the document in Orderful for the exact validation errors.</div>
+<div class="card"><b>Stay ahead of acknowledgments</b><br>Track 997s per partner, and get reminder emails when one is overdue.</div>
+<div class="card"><b>Work an issue</b><br>Raise a Jira or ServiceNow ticket from a document and follow its status without leaving EDI360.</div>
+<div class="card"><b>Ask in plain language</b><br>Use the assistant to look things up, or Explain EDI to read a document in everyday words.</div>
+<div class="card"><b>Onboard and test partners</b><br>Check each test document end to end, and build test files for a partner.</div>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="chapter" id="c2">
+<div class="num">Chapter 2</div>
+<h1>Roles and what each can do</h1>
+<p class="lead">Your administrator gives you one role. It decides which screens and actions you see.</p>
+
+<table>
+<thead><tr><th>Capability</th><th>Customer admin</th><th>Support</th><th>Business</th><th>Auditor</th></tr></thead>
+<tbody>
+<tr><td>Dashboard, documents, document detail, business details</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Export documents to CSV</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>View partners, track a document flow, view Recipes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>My View and your own email alerts</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Raw EDI and Explain EDI</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Refresh a document's status from Orderful</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Tickets page, create a ticket, comment, change status</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Email a document report</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Edit partner settings and expected flows</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>View 997 reminder rules</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Create or change 997 rules, send a reminder now</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Edit how Workato recipes are read</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>Test file generator</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+<tr><td>Settings: members, connections, ticketing, AI model</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+<tr><td>AI assistant (answers to questions)</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Assistant prepares tickets, reports and comments</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+<tr><td>Assistant prepares a 997 rule</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+</tbody></table>
+
+<h3>In short</h3>
+<ul>
+<li><b>Customer admin</b> manages the organisation: members, connections, settings and rules. Sees everything, including raw EDI.</li>
+<li><b>Support</b> investigates documents. Sees business data and raw EDI, and works tickets.</li>
+<li><b>Business</b> reads dashboards and document details, and can raise tickets and email reports. Does not see raw EDI.</li>
+<li><b>Auditor</b> has a read-only view of dashboards and business data.</li>
+</ul>
+<p>You only see your own organisation's documents. If a menu item or button is missing, your role does not include it. Ask your administrator if you need more.</p>
+</div>
+
+<!-- 3 -->
+<div class="chapter" id="c3">
+<div class="num">Chapter 3</div>
+<h1>Signing in and finding your way around</h1>
+
+<h3>Your first sign-in</h3>
+<div class="steps">
+<div class="step">Your administrator adds you with your email address and a role.</div>
+<div class="step">You receive an invitation email with a link. If email is not set up, your administrator gives you the link directly.</div>
+<div class="step">Open the link, choose a password and sign in.</div>
+</div>
+
+<h3>The top bar</h3>
+<p>The navigation runs across the top of every page. What you see depends on your role.</p>
+<table>
+<thead><tr><th>Item</th><th>What it is</th></tr></thead>
+<tbody>
+<tr><td><b>Dashboard</b></td><td>Health of your documents at a glance.</td></tr>
+<tr><td><b>Transactions</b></td><td>The full list of documents with search and filters.</td></tr>
+<tr><td><b>Partners</b></td><td>Your trading partners, acknowledgment tracking, expected flows and 997 reminder rules.</td></tr>
+<tr><td><b>Tickets</b></td><td>Tickets raised from documents, with their live status. Not shown to auditors.</td></tr>
+<tr><td><b>Recipes</b></td><td>The Workato recipes that send logs to EDI360.</td></tr>
+<tr><td><b>Test files</b></td><td>Test EDI file generator. Customer admins and support.</td></tr>
+<tr><td><b>Settings</b></td><td>Organisation settings. Customer admins.</td></tr>
+</tbody></table>
+<p>The assistant button sits at the bottom right of every page.</p>
+<p>Times are shown in your organisation's time zone, which appears at the foot of the Dashboard.</p>
+</div>
+
+<!-- 4 -->
+<div class="chapter" id="c4">
+<div class="num">Chapter 4</div>
+<h1>The Dashboard</h1>
+<p class="lead">The Dashboard answers one question: is everything flowing?</p>
+
+<h3>Choosing what you see</h3>
+<p>At the top right, choose the <b>environment</b> (test and production, production only, or test only) and the <b>date range</b>. Everything on the page follows these two choices.</p>
+
+<h3>Status cards</h3>
+<p>A <b>Total</b> card shows every document in the period. The twelve document statuses are grouped into five more cards:</p>
+<table>
+<thead><tr><th>Card</th><th>Includes</th></tr></thead>
+<tbody>
+<tr><td><span class="badge b-good">Completed</span></td><td>Completed, Delivered, Sent to ERP, ERP Acknowledged, Sent to Orderful</td></tr>
+<tr><td><span class="badge b-act">In progress</span></td><td>In Progress, Received, Transformed, Retrying</td></tr>
+<tr><td><span class="badge b-warn">Warning</span></td><td>Warning</td></tr>
+<tr><td><span class="badge b-bad">Failed</span></td><td>Failed</td></tr>
+<tr><td><span class="badge b-none">Unknown</span></td><td>Unknown</td></tr>
+</tbody></table>
+<p>Click any card to open the Transactions list filtered to it.</p>
+
+<h3>Volume by day</h3>
+<p>A chart of how many documents arrived each day, so a quiet day or a spike stands out.</p>
+
+<h3>Needs attention</h3>
+<p>The most recent failed and warning documents. Each row shows the document type and number, the two parties, the environment (test or production), the status, how long ago it last changed, and a small strip showing which of the three blocks is affected. Click a row to open the document, or <b>View all</b> to open the full filtered list.</p>
+<p>If your <b>My View</b> is set (Chapter 5), the Dashboard shows only the partners and document types you chose.</p>
+</div>
+
+<!-- 5 -->
+<div class="chapter" id="c5">
+<div class="num">Chapter 5</div>
+<h1>Documents: search, filter and export</h1>
+<p class="lead">The Transactions page lists every document. Use the filters to narrow it down.</p>
+
+<h3>Search and filters</h3>
+<table>
+<thead><tr><th>Filter</th><th>Choices and notes</th></tr></thead>
+<tbody>
+<tr><td><b>Search</b></td><td>A PO, shipment, invoice or BOL number; an Orderful transaction id; an ISA or GS control number; a delivery id; or a Workato job id. Searching for a number looks across all dates unless you choose a period.</td></tr>
+<tr><td><b>Status</b></td><td>All, Completed, In progress, Warning, Failed or Unknown.</td></tr>
+<tr><td><b>Direction</b></td><td>Both, Inbound or Outbound.</td></tr>
+<tr><td><b>Environment</b></td><td>Test and production, Production only, or Test only.</td></tr>
+<tr><td><b>Type</b></td><td>An X12 document type such as 850 or 856.</td></tr>
+<tr><td><b>Period</b></td><td>Last 24 hours (the default), 7 days, 14 days, 30 days, or All time.</td></tr>
+</tbody></table>
+<p>Press <b>Search</b> to apply. <b>Clear</b> removes all filters. The list shows 25 documents per page and the total is shown above it.</p>
+
+<h3>Reading the list</h3>
+<p>Each row shows the document type and number, the partners, the environment, a status badge, a strip showing the three blocks, the <b>Ack</b> column (the 997 state, see Chapter 7) and when it last changed. Click a row to open the document.</p>
+
+<h3>Buttons above the list</h3>
+<table>
+<thead><tr><th>Button</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><b>Track Document Flow</b></td><td>Follows one PO, shipment, invoice or BOL across a partner's documents (Chapter 8).</td></tr>
+<tr><td><b>My View</b></td><td>Limits what you see to the partners and document types you choose.</td></tr>
+<tr><td><b>Email Alerts</b></td><td>Emails you when a partner's document succeeds or fails (Chapter 10).</td></tr>
+<tr><td><b>Export CSV</b></td><td>Downloads the current list, with your filters applied.</td></tr>
+</tbody></table>
+
+<h3>My View</h3>
+<p>Pick the partners you care about and, for each, the document types. The Dashboard, the list and exports then open on just those. My View only changes what you see; it does not change what you are allowed to see. A banner above the list shows that it is on, with <b>Edit</b> and <b>Show everything</b> links. Searching for an exact number ignores My View, so you can still find any document.</p>
+
+<h3>Working with several documents</h3>
+<p>Tick the boxes on the left of the rows (or the box in the header to select the whole page). A bar appears with these actions:</p>
+<ul>
+<li><b>Create ticket</b> for the selected documents, up to 25 in one ticket (Chapter 11).</li>
+<li><b>Send Email</b> with a report of the selected documents (Chapter 12).</li>
+<li><b>Export selected</b> to CSV.</li>
+<li><b>Clear</b> to deselect.</li>
+</ul>
+<p>Ticket and email actions are available to every role except auditors.</p>
+</div>
+
+<!-- 6 -->
+<div class="chapter" id="c6">
+<div class="num">Chapter 6</div>
+<h1>A single document in detail</h1>
+<p class="lead">The document page tells the full story of one transaction.</p>
+
+<h3>The three blocks</h3>
+<p>At the top are three blocks in business order. For an inbound document: <b>Orderful</b>, then <b>Workato</b>, then <b>Target (ERP)</b>. For an outbound document: <b>Source (ERP)</b>, then <b>Workato</b>, then <b>Orderful</b>. Each block has its own status and colour, and an arrow takes the colour of the block it leaves. The first block that is red or amber is usually where to look.</p>
+
+<h3>What else is on the page</h3>
+<table>
+<thead><tr><th>Section</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><b>Failure notice</b></td><td>If something went wrong, which step failed and the message that was reported.</td></tr>
+<tr><td><b>Business details</b></td><td>Ship from, ship to and sold to, document date, amounts, references and the first line items, read from the document itself.</td></tr>
+<tr><td><b>Identifiers</b></td><td>The Orderful transaction id, control numbers, delivery id and Workato job ids, so you can quote them to a partner or to support.</td></tr>
+<tr><td><b>Timeline</b></td><td>Each event in order: received, processed, sent, acknowledged.</td></tr>
+<tr><td><b>Runs</b></td><td>Every time the document was processed, with its status, start time and duration. A retry in Workato appears as another run of the same document.</td></tr>
+<tr><td><b>Tickets</b></td><td>Any tickets raised for this document with their latest status. Click one to open it.</td></tr>
+<tr><td><b>Raw EDI</b></td><td>The X12 text of the document. Customer admins and support only.</td></tr>
+<tr><td><b>Explain EDI</b></td><td>The document written in plain language (Chapter 13). Customer admins and support only.</td></tr>
+</tbody></table>
+
+<h3>Buttons on the page</h3>
+<table>
+<thead><tr><th>Button</th><th>When it appears and what it does</th></tr></thead>
+<tbody>
+<tr><td><b>Create ticket</b></td><td>Raises a Jira or ServiceNow ticket for this document.</td></tr>
+<tr><td><b>Send email</b></td><td>Emails a report of this document.</td></tr>
+<tr><td><b>Refresh from Orderful</b></td><td>For documents you sent. Asks Orderful now for the latest validation, delivery and 997 status instead of waiting for the next automatic check. Customer admins and support.</td></tr>
+<tr><td><b>Open in Orderful</b></td><td>On a failed document. Opens it in Orderful where the exact validation errors are listed.</td></tr>
+</tbody></table>
+
+<h3>Outbound documents and Orderful</h3>
+<p>For a document you send, the Workato log shows what was sent but not whether Orderful accepted it. EDI360 asks Orderful itself, once a minute at first, then less often, until the outcome is final. If Orderful reports the document as invalid, the Orderful block and the document show <span class="badge b-bad">Failed</span> at "Orderful validation", even though the Workato recipe itself ran correctly. The Workato block stays green because the recipe did its job.</p>
+</div>
+
+<!-- 7 -->
+<div class="chapter" id="c7">
+<div class="num">Chapter 7</div>
+<h1>Understanding statuses and 997s</h1>
+
+<h3>Document statuses</h3>
+<table>
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="badge b-act">Received</span></td><td>The document has arrived and processing is starting.</td></tr>
+<tr><td><span class="badge b-act">In Progress</span></td><td>A step is running.</td></tr>
+<tr><td><span class="badge b-act">Transformed</span></td><td>Workato has converted the document to the next format.</td></tr>
+<tr><td><span class="badge b-act">Retrying</span></td><td>A step is being tried again.</td></tr>
+<tr><td><span class="badge b-good">Sent to ERP</span></td><td>An inbound document has been handed to your ERP.</td></tr>
+<tr><td><span class="badge b-good">ERP Acknowledged</span></td><td>Your ERP confirmed it received the document.</td></tr>
+<tr><td><span class="badge b-good">Sent to Orderful</span></td><td>An outbound document was sent to Orderful and has passed validation. It is on its way to the partner.</td></tr>
+<tr><td><span class="badge b-good">Delivered</span></td><td>Orderful delivered the document.</td></tr>
+<tr><td><span class="badge b-good">Completed</span></td><td>Every expected step has finished.</td></tr>
+<tr><td><span class="badge b-warn">Warning</span></td><td>The document finished but something needs a look.</td></tr>
+<tr><td><span class="badge b-bad">Failed</span></td><td>A step failed, for example Orderful validation, delivery, a rejected 997, or an error in a Workato recipe.</td></tr>
+<tr><td><span class="badge b-none">Unknown</span></td><td>The status could not be worked out from the information received.</td></tr>
+</tbody></table>
+
+<h3>The Ack column (997 acknowledgments)</h3>
+<p>A 997 is the partner's confirmation that it received your document, or your confirmation of theirs. The <b>Ack</b> column shows only the 997 state, so it is never confused with delivery.</p>
+<table>
+<thead><tr><th>Shown</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><b>Awaiting 997</b></td><td>Orderful has not reported a 997 for this document yet.</td></tr>
+<tr><td><b>Accepted</b></td><td>The 997 came back and accepted the document.</td></tr>
+<tr><td><b>Rejected</b></td><td>The 997 came back and rejected the document.</td></tr>
+<tr><td><b>N/A</b></td><td>The document failed Orderful validation or could not be delivered, so no 997 is expected.</td></tr>
+<tr><td><b>997 not tracked</b></td><td>Acknowledgments are switched off for this partner. Change it on the Partners page.</td></tr>
+</tbody></table>
+<p>Hover over a label to see the reason.</p>
+</div>
+
+<!-- 8 -->
+<div class="chapter" id="c8">
+<div class="num">Chapter 8</div>
+<h1>Partners and expected EDI flows</h1>
+<p class="lead">The Partners page is where you set how each trading partner is tracked.</p>
+
+<p>A partner appears here as soon as a document to or from it arrives.</p>
+
+<h3>Acknowledgment tracking</h3>
+<p>For each partner, choose whether to track:</p>
+<ul>
+<li>the 997 <b>we send</b> for documents we receive (inbound), and</li>
+<li>the 997 we <b>expect back</b> for documents we send (outbound).</li>
+</ul>
+<p>Tracking drives the Ack column and the 997 reminder rules. Customer admins and support can change it.</p>
+
+<h3>Manage EDI Flow</h3>
+<p>An EDI flow describes the order of documents you expect with a partner, for example an 850 purchase order in, then an 855 acknowledgment, an 856 ship notice and an 810 invoice out. For each step you can set:</p>
+<ul>
+<li>the document type and direction, and its place in the sequence;</li>
+<li>whether one document produces several (one to many);</li>
+<li>whether the step is optional;</li>
+<li>how long after the previous step it counts as late, in minutes.</li>
+</ul>
+
+<h3>Track Document Flow</h3>
+<p>Enter a partner and a PO, shipment, invoice or BOL number. EDI360 gathers every related document, including the ship notice that quotes the PO and the invoice that quotes the shipment, and lays out each step of the flow:</p>
+<table>
+<thead><tr><th>Step result</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Success</td><td>The document was sent or received as expected.</td></tr>
+<tr><td>Failed</td><td>The document failed.</td></tr>
+<tr><td>Awaiting 997</td><td>The document is through, but the acknowledgment has not come back.</td></tr>
+<tr><td>Pending</td><td>The step has not happened yet and is not yet late.</td></tr>
+<tr><td>Late</td><td>The step has not happened within the time set for it.</td></tr>
+<tr><td>Skipped</td><td>An optional step that did not occur.</td></tr>
+</tbody></table>
+<p>Track Document Flow is also available from the Transactions page.</p>
+</div>
+
+<!-- 9 -->
+<div class="chapter" id="c9">
+<div class="num">Chapter 9</div>
+<h1>997 reminder rules</h1>
+<p class="lead">A rule emails the right people when a 997 is overdue, so nothing waits unnoticed.</p>
+<p>The rules sit at the bottom of the Partners page. Customer admins create and change them. Support can view them.</p>
+
+<h3>What a rule says</h3>
+<table>
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Partner</td><td>One partner, or all partners.</td></tr>
+<tr><td>Document types</td><td>Chosen types, or all.</td></tr>
+<tr><td>Direction</td><td>Inbound, outbound, or both (the default).</td></tr>
+<tr><td>Hours</td><td>How long a 997 may stay pending before it counts as overdue, for example 24.</td></tr>
+<tr><td>Recipients</td><td>Up to 10 email addresses.</td></tr>
+<tr><td>When</td><td>Up to two scheduled times a day, such as morning and evening, in your organisation's time zone, or on demand only.</td></tr>
+</tbody></table>
+
+<h3>What counts as pending</h3>
+<ul>
+<li>The document went through Orderful.</li>
+<li>The partner's 997 is tracked in that direction.</li>
+<li>Orderful has not reported the 997 as accepted or rejected.</li>
+<li>The document did not fail validation or delivery.</li>
+</ul>
+<p>The age counts from Orderful's creation time, or from when EDI360 first saw the document. The look-back is 30 days.</p>
+
+<h3>Using a rule</h3>
+<div class="steps">
+<div class="step">Open <b>Partners</b> and scroll to the 997 reminder rules.</div>
+<div class="step">Add a rule: choose the partner, types, direction, hours, recipients and times.</div>
+<div class="step">Use <b>Preview</b> to see which documents are pending right now, without sending anything.</div>
+<div class="step">Use <b>Send now</b> to email the list to the recipients straight away.</div>
+</div>
+<p>Scheduled emails go out only when something is waiting. Each scheduled time is sent once. The email goes through your organisation's own email account, which an administrator connects in Settings.</p>
+</div>
+
+<!-- 10 -->
+<div class="chapter" id="c10">
+<div class="num">Chapter 10</div>
+<h1>Email alerts</h1>
+<p class="lead">Email alerts tell you when future documents succeed or fail. They are personal to you.</p>
+
+<div class="steps">
+<div class="step">On the Transactions page, click <b>Email Alerts</b>.</div>
+<div class="step">Choose a partner (or any partner) and a document type (or any type).</div>
+<div class="step">Choose when to be told: on success, on failure, or both. Failure covers Failed and Warning.</div>
+<div class="step">Save. Use <b>Send me a test email</b> to check that email reaches you.</div>
+</div>
+
+<ul>
+<li>You are emailed once for each finished document that matches.</li>
+<li>An alert only covers documents that finish after you create it.</li>
+<li>You can switch an alert off, edit it or delete it at any time. Only you see your alerts.</li>
+</ul>
+
+<div class="note"><b>Alerts or reminder rules?</b> An email alert is a personal subscription to future documents. A 997 reminder rule is an organisation setting that reports overdue acknowledgments to a list of people. A report email (Chapter 12) tells someone about documents that already exist.</div>
+</div>
+
+<!-- 11 -->
+<div class="chapter" id="c11">
+<div class="num">Chapter 11</div>
+<h1>Tickets in Jira or ServiceNow</h1>
+<p class="lead">Raise a ticket from a document, then follow it in EDI360 or in your ticket system. Both stay in step.</p>
+
+<h3>Creating a ticket</h3>
+<div class="steps">
+<div class="step">Open a document, or tick up to 25 documents on the Transactions page.</div>
+<div class="step">Click <b>Create ticket</b>.</div>
+<div class="step">Enter the reason and choose a priority: critical, high, medium or low.</div>
+<div class="step">Confirm. EDI360 creates the ticket and fills it in from the document: partners, status, where it stopped and why, Orderful and Workato identifiers, business facts and links. Raw EDI is not included.</div>
+</div>
+<p>The ticket then shows on each document page with its status. This needs your administrator to have connected Jira or ServiceNow in Settings.</p>
+
+<h3>The Tickets page</h3>
+<p>Every ticket raised from EDI360 is listed with its latest status, assignee and priority, and the documents it covers. Click a ticket to open its panel:</p>
+<table>
+<thead><tr><th>In the panel</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Comments</td><td>Comments from both EDI360 and the ticket system, in order.</td></tr>
+<tr><td><b>Post comment</b></td><td>Adds a comment to the ticket. It is marked as posted from EDI360 with your name.</td></tr>
+<tr><td><b>Change status</b></td><td>Jira: moves the ticket along its workflow, offering only the moves allowed right now. ServiceNow: change the status in ServiceNow.</td></tr>
+<tr><td><b>Open in Jira</b> or <b>Open in ServiceNow</b></td><td>Opens the ticket in its own system.</td></tr>
+<tr><td><b>Refresh</b></td><td>Reads the ticket again right now.</td></tr>
+</tbody></table>
+
+<h3>How fresh is the status?</h3>
+<p>EDI360 reads unfinished tickets automatically: every 5 minutes for the first day, every 30 minutes for the first week, then every 2 hours. Finished tickets are no longer checked. Opening or refreshing a ticket reads it immediately. In Settings, the ticketing card shows when the last sync ran.</p>
+<p>Auditors do not see tickets.</p>
+</div>
+
+<!-- 12 -->
+<div class="chapter" id="c12">
+<div class="num">Chapter 12</div>
+<h1>Emailing a document report</h1>
+<p class="lead">Send a clear, readable summary of documents to a colleague or a partner contact.</p>
+
+<div class="steps">
+<div class="step">Open a document, or select documents on the Transactions page.</div>
+<div class="step">Click <b>Send email</b>.</div>
+<div class="step">Add up to 5 recipients, a subject and, if you like, a message.</div>
+<div class="step">Send. Each recipient receives one report. Replies come back to you.</div>
+</div>
+
+<h3>What the report contains</h3>
+<ul>
+<li><b>A business section:</b> document, partners, ship from and ship to, amounts, references and line items.</li>
+<li><b>The three-block status</b> for each document.</li>
+<li><b>A technical section:</b> Orderful and Workato identifiers, failed steps and links.</li>
+</ul>
+<p>Raw EDI is never included. The report goes out through your organisation's own email account. Every send is recorded with its recipients.</p>
+</div>
+
+<!-- 13 -->
+<div class="chapter" id="c13">
+<div class="num">Chapter 13</div>
+<h1>The AI assistant and Explain EDI</h1>
+
+<h3>The assistant</h3>
+<p>Click the chat button at the bottom right of any page and ask in everyday language. The assistant answers from your organisation's own data, and asks you a short question when it needs a detail, such as which partner or which order.</p>
+
+<h4>Things you can ask</h4>
+<ul>
+<li>"Did we receive PO 100 from our partner?"</li>
+<li>"Show failed 855s from the last 3 days."</li>
+<li>"What are the item details and ship-to address for PO CHRP12345?"</li>
+<li>"Which documents are still waiting for a 997 for more than 24 hours?"</li>
+<li>"List our trading partners."</li>
+<li>"What is the status of our open tickets?"</li>
+</ul>
+
+<h4>Asking it to do something</h4>
+<p>The assistant can prepare a 997 reminder rule, a ticket, an emailed report or a ticket comment. It does not carry these out by itself. It shows a card with the details, and nothing happens until you press <b>Confirm</b>. Press <b>Cancel</b> to drop it.</p>
+
+<table>
+<thead><tr><th>Good to know</th><th></th></tr></thead>
+<tbody>
+<tr><td>Answers</td><td>Come from your documents, partners, 997 status and tickets. If nothing matches, it says so.</td></tr>
+<tr><td>Links</td><td>Document and ticket names in an answer are links you can click.</td></tr>
+<tr><td>Raw EDI</td><td>The assistant does not show raw EDI.</td></tr>
+<tr><td>Conversation</td><td>It remembers the current conversation only. Closing the chat starts a fresh one.</td></tr>
+<tr><td>Limits</td><td>Your administrator sets a daily message limit for the organisation. If the assistant is switched off, the button does not appear.</td></tr>
+</tbody></table>
+
+<h3>Explain EDI</h3>
+<p>On a document page, <b>Explain EDI</b> writes the document in plain language: who sent it, to whom, what was ordered or shipped, and anything unusual. It is available to customer admins and support, in 12 languages.</p>
+<div class="steps">
+<div class="step">Open the document.</div>
+<div class="step">Choose a language and click <b>Explain EDI</b>.</div>
+<div class="step">Read the result, or print it to PDF.</div>
+</div>
+<p>The explanation is saved, so opening it again is instant. Use the refresh option if you want it written again. Explain EDI needs the raw EDI to have been converted for that document.</p>
+<p>The assistant and Explain EDI use the same AI model, which a customer admin chooses in Settings.</p>
+</div>
+
+<!-- 14 -->
+<div class="chapter" id="c14">
+<div class="num">Chapter 14</div>
+<h1>Workato recipes</h1>
+<p class="lead">EDI360 learns from the logs your Workato recipes send. The Recipes page lists every recipe that has sent one.</p>
+
+<p>Workato logs every recipe in the account, but EDI360 keeps only the EDI ones. Jobs that are not EDI are counted and set aside.</p>
+
+<h3>The Recipes list</h3>
+<table>
+<thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Recipe</td><td>The recipe name from Workato.</td></tr>
+<tr><td>Jobs</td><td>How many jobs have been recorded, and how many were set aside.</td></tr>
+<tr><td>Keep jobs</td><td><b>Auto</b> (EDI360 decides), <b>Always keep</b>, or <b>Ignore</b>.</td></tr>
+<tr><td>Direction</td><td>Inbound or outbound, read from the log.</td></tr>
+<tr><td>Document type</td><td>For example 850, read from the log.</td></tr>
+</tbody></table>
+
+<h3>Changing how a recipe is read</h3>
+<p>Customer admins can change a recipe:</p>
+<ul>
+<li>Choose <b>Always keep</b> for a recipe that is one stage of an EDI flow but contains no EDI of its own, for example SAP to a staging file or queue.</li>
+<li>Choose <b>Ignore</b> for a recipe that should not appear.</li>
+<li>Set the direction or document type when the automatic reading gets it wrong.</li>
+</ul>
+<p>Saving also re-reads past jobs with the new setting. Jobs that were set aside earlier under <b>Auto</b> cannot be recovered; later ones are kept.</p>
+<p>This page only changes how EDI360 reads the logs. It never changes anything in Workato.</p>
+</div>
+
+<!-- 15 -->
+<div class="chapter" id="c15">
+<div class="num">Chapter 15</div>
+<h1>Test file generator</h1>
+<p class="lead">Build correct X12 test files for a trading partner. Customer admins and support.</p>
+
+<div class="steps">
+<div class="step">Open <b>Test files</b>.</div>
+<div class="step"><b>Choose the partner.</b> Pick a saved partner, or enter one by hand. Partner details include the ISA and GS ids on both sides, the X12 version (4010 or 5010), test or production usage, delimiters, product-id order and default parties.</div>
+<div class="step"><b>Choose the document:</b> 850, 855, 856, 810, 204, 990, 214, 210, 940, 943, 944, 945 or 997. The form follows the document's layout, and the file previews live as you type, with warnings for anything missing.</div>
+<div class="step"><b>Download.</b> The download uses the partner's next control numbers and records the file in history. A preview never uses a number. You can also type control numbers yourself.</div>
+</div>
+
+<h3>Line items</h3>
+<p>Paste rows from Excel or a CSV, with the columns matched by their header names. Save an .xlsx workbook as CSV first.</p>
+
+<h3>Partner rules</h3>
+<p>Each partner can carry rules, one per line, to match its specification:</p>
+<table>
+<thead><tr><th>Rule</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Add a segment after another</td><td><span class="kbd">AFTER BEG: REF*DP*3</span></td></tr>
+<tr><td>Replace a segment</td><td><span class="kbd">REPLACE ITD: ITD**3***Net</span></td></tr>
+<tr><td>Remove a segment</td><td><span class="kbd">REMOVE PER</span></td></tr>
+<tr><td>Add a note</td><td>A line starting with <span class="kbd">#</span></td></tr>
+</tbody></table>
+<p>Generated files have a correctly sized ISA, matching segment, group and interchange counts, and consistent hierarchy.</p>
+</div>
+
+<!-- 16 -->
+<div class="chapter" id="c16">
+<div class="num">Chapter 16</div>
+<h1>Settings for administrators</h1>
+<p class="lead">Customer admins open <b>Settings</b> to manage the organisation.</p>
+
+<table>
+<thead><tr><th>Card</th><th>What you do there</th></tr></thead>
+<tbody>
+<tr><td><b>Members</b></td><td>Add people with a role. Each person gets an invitation by email, and the link is also shown to you so you can pass it on. Change someone's role or switch them off. An organisation always keeps at least one customer admin.</td></tr>
+<tr><td><b>Connections</b></td><td>Save the organisation's own accounts: Orderful (and the Orderful organisation id used for the Open in Orderful link), Workato, the email service used for alerts and reports, and the AI provider you choose. Saved values are not shown again; only the last four characters appear so you can tell which is in place.</td></tr>
+<tr><td><b>Ticketing (Jira or ServiceNow)</b></td><td>Connect the ticket system: its address, a service account and token, and the Jira project key and issue type, or the ServiceNow category and assignment group. <b>Test connection</b> checks it without creating anything. The card also shows when tickets last synced, and lets you sync now.</td></tr>
+<tr><td><b>Workato ingestion endpoint</b></td><td>For organisations where Workato sends logs to EDI360: the address to use, a copy button, when the last log arrived, counts for the last 24 hours, the latest failure and an example request.</td></tr>
+<tr><td><b>API keys</b></td><td>Create a key for the ingestion endpoint, or for connecting an AI tool. A key is shown once when created, so copy it then. You can switch a key off.</td></tr>
+<tr><td><b>MCP access (AI tools)</b></td><td>The address and ready-to-copy set-up steps for connecting an AI tool such as Claude or Gemini to read your EDI360 data. It is read-only.</td></tr>
+<tr><td><b>AI model (assistant and Explain EDI)</b></td><td>Switch the assistant on or off, choose the provider and model, and set the daily message limit. Shows this organisation's usage for the last 30 days.</td></tr>
+</tbody></table>
+
+<h3>Adding a member</h3>
+<div class="steps">
+<div class="step">Open Settings and find <b>Members</b>.</div>
+<div class="step">Enter the email address, name and role. The role description appears as you choose.</div>
+<div class="step">Click add. The invitation is emailed, and the link is shown so you can also send it yourself.</div>
+</div>
+</div>
+
+<!-- 17 -->
+<div class="chapter" id="c17">
+<div class="num">Chapter 17</div>
+<h1>Onboarding and testing a new trading partner</h1>
+<p class="lead">The same four steps work for every new partner, and EDI360 gives you the evidence at each one.</p>
+
+<table>
+<thead><tr><th>Step</th><th>What you do</th><th>What EDI360 shows</th></tr></thead>
+<tbody>
+<tr><td><b>1. Add the partner</b></td><td>Set the partner up in Orderful. Once its first test document arrives, it appears on the Partners page.</td><td>The partner on the Partners page, ready to be set up.</td></tr>
+<tr><td><b>2. Set it up</b></td><td>Switch on 997 tracking in each direction. Define the expected flow with Manage EDI Flow.</td><td>The Ack column and flow checks follow your settings.</td></tr>
+<tr><td><b>3. Send test documents</b></td><td>Send test 850s, 856s and 810s, or build test files in Test files. Filter the list to the <b>Test</b> environment.</td><td>Each test as it lands, inbound and outbound.</td></tr>
+<tr><td><b>4. Trace each test</b></td><td>Open every test document and check the three blocks. Use Explain EDI to read it. Use Refresh from Orderful for documents you sent.</td><td>The exact block where a test stops, and the reason.</td></tr>
+<tr><td><b>5. Confirm acknowledgments</b></td><td>Check that each document shows Accepted in the Ack column.</td><td>Awaiting 997, Accepted or Rejected for each document.</td></tr>
+<tr><td><b>6. Go live</b></td><td>Switch the partner to production. Add a 997 reminder rule and an email alert for failures.</td><td>Production documents under the <b>Production</b> environment filter.</td></tr>
+</tbody></table>
+
+<h3>A simple test checklist per partner</h3>
+<table>
+<thead><tr><th>Check</th><th>Done when</th></tr></thead>
+<tbody>
+<tr><td>Inbound 850 reaches the ERP</td><td>Status Completed, all three blocks green.</td></tr>
+<tr><td>Outbound 855 is valid</td><td>Orderful block green, no validation failure.</td></tr>
+<tr><td>Outbound 856 is valid</td><td>Orderful block green, shipment number matches.</td></tr>
+<tr><td>Outbound 810 is valid</td><td>Orderful block green, invoice number matches.</td></tr>
+<tr><td>Acknowledgments return</td><td>Ack shows Accepted for each outbound document.</td></tr>
+<tr><td>Track Document Flow on one PO</td><td>Every expected step shows Success.</td></tr>
+<tr><td>Tickets and alerts set for production</td><td>A failure alert and a 997 reminder rule are in place.</td></tr>
+</tbody></table>
+</div>
+
+<!-- 18 -->
+<div class="chapter" id="c18">
+<div class="num">Chapter 18</div>
+<h1>Cookbook: step-by-step recipes</h1>
+<p class="lead">Short, ready-to-follow recipes for the jobs that come up most often.</p>
+
+<div class="recipe"><h3>1. Check where a purchase order is</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Transactions</div>
+<div class="steps">
+<div class="step">Open <b>Transactions</b>.</div>
+<div class="step">Type the PO number in <b>Search</b> and press Search. A number search covers all dates.</div>
+<div class="step">Open the 850. Read the three blocks and the status.</div>
+<div class="step">Use Track Document Flow to see the 855, 856 and 810 for the same PO.</div>
+</div></div>
+
+<div class="recipe"><h3>2. Find out why a document failed</h3>
+<div class="meta">Roles: all (Explain EDI: customer admin, support) &nbsp;|&nbsp; Where: Document page</div>
+<div class="steps">
+<div class="step">Open the failed document from <b>Needs attention</b> or the list with Status set to Failed.</div>
+<div class="step">Read the failure notice and find the first red block.</div>
+<div class="step">If Orderful failed it, click <b>Open in Orderful</b> to see the exact validation errors.</div>
+<div class="step">If you have access, use <b>Explain EDI</b> to read the document in plain words.</div>
+</div></div>
+
+<div class="recipe"><h3>3. Answer a partner who says they never got a document</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Transactions</div>
+<div class="steps">
+<div class="step">Search by the PO or document number.</div>
+<div class="step">Open the document and check the Orderful block, then the <b>Delivery</b> and Ack information.</div>
+<div class="step">For an outbound document, click <b>Refresh from Orderful</b> to get the latest status.</div>
+<div class="step">Use <b>Send email</b> to send the partner contact a report, or copy the details into your reply.</div>
+</div></div>
+
+<div class="recipe"><h3>4. Chase missing 997s</h3>
+<div class="meta">Roles: customer admin (support can view) &nbsp;|&nbsp; Where: Partners</div>
+<div class="steps">
+<div class="step">On <b>Partners</b>, confirm the partner's 997 tracking is on.</div>
+<div class="step">In the 997 reminder rules, add a rule: partner, hours (for example 24), recipients and times.</div>
+<div class="step">Click <b>Preview</b> to see what is pending right now.</div>
+<div class="step">Click <b>Send now</b> to email the list immediately, or let the schedule do it.</div>
+</div></div>
+
+<div class="recipe"><h3>5. Be told when a partner's documents fail</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Transactions</div>
+<div class="steps">
+<div class="step">Click <b>Email Alerts</b>.</div>
+<div class="step">Choose the partner and document type, and set the trigger to <b>failure</b>.</div>
+<div class="step">Save and use <b>Send me a test email</b>.</div>
+</div></div>
+
+<div class="recipe"><h3>6. Raise a ticket for a failed document</h3>
+<div class="meta">Roles: customer admin, support, business &nbsp;|&nbsp; Where: Document page or Transactions</div>
+<div class="steps">
+<div class="step">Open the document, or tick several on the list.</div>
+<div class="step">Click <b>Create ticket</b>, write the reason and choose the priority.</div>
+<div class="step">Confirm. The ticket appears on the document and on the <b>Tickets</b> page.</div>
+</div></div>
+
+<div class="recipe"><h3>7. Update a ticket without opening Jira</h3>
+<div class="meta">Roles: customer admin, support, business &nbsp;|&nbsp; Where: Tickets</div>
+<div class="steps">
+<div class="step">Open <b>Tickets</b> and click the ticket.</div>
+<div class="step">Read the comments, type yours and click <b>Post comment</b>.</div>
+<div class="step">For Jira, click <b>Change status</b> and choose the next step.</div>
+</div></div>
+
+<div class="recipe"><h3>8. Start the day with a quick health check</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Dashboard</div>
+<div class="steps">
+<div class="step">Open the <b>Dashboard</b> and look at the status cards.</div>
+<div class="step">Check <b>Needs attention</b> and open each failed or warning document.</div>
+<div class="step">Open <b>Tickets</b> to see which issues are already being worked.</div>
+</div></div>
+
+<div class="recipe"><h3>9. Show only the partners you look after</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Transactions</div>
+<div class="steps">
+<div class="step">Click <b>My View</b>.</div>
+<div class="step">Pick your partners and, for each, the document types.</div>
+<div class="step">Save. The Dashboard, list and exports now show only those. Click <b>Show everything</b> to clear it.</div>
+</div></div>
+
+<div class="recipe"><h3>10. Send a status report to a colleague</h3>
+<div class="meta">Roles: customer admin, support, business &nbsp;|&nbsp; Where: Transactions</div>
+<div class="steps">
+<div class="step">Filter the list, then tick the documents.</div>
+<div class="step">Click <b>Send Email</b>, add up to 5 recipients and a subject.</div>
+<div class="step">Send. Each person gets one report with business and technical sections.</div>
+</div></div>
+
+<div class="recipe"><h3>11. Look something up with the assistant</h3>
+<div class="meta">Roles: all &nbsp;|&nbsp; Where: Chat button</div>
+<div class="steps">
+<div class="step">Click the chat button.</div>
+<div class="step">Ask, for example: "What are the items and ship-to for PO 12345?"</div>
+<div class="step">Click the links in the answer to open the documents.</div>
+</div></div>
+
+<div class="recipe"><h3>12. Keep a Workato stage in EDI360</h3>
+<div class="meta">Roles: customer admin &nbsp;|&nbsp; Where: Recipes</div>
+<div class="steps">
+<div class="step">Open <b>Recipes</b> and find the recipe that moves a document to a staging file or queue.</div>
+<div class="step">Set <b>Keep jobs</b> to <b>Always keep</b> and save.</div>
+<div class="step">Later jobs from that recipe now appear as part of the document's journey.</div>
+</div></div>
+
+<div class="recipe"><h3>13. Connect Jira or ServiceNow</h3>
+<div class="meta">Roles: customer admin &nbsp;|&nbsp; Where: Settings</div>
+<div class="steps">
+<div class="step">Open <b>Settings</b> and the <b>Ticketing</b> card.</div>
+<div class="step">Choose the ticket system and enter its address, service account and token, plus the project or category details.</div>
+<div class="step">Click <b>Test connection</b>, then save.</div>
+</div></div>
+
+<div class="recipe"><h3>14. Invite a new team member</h3>
+<div class="meta">Roles: customer admin &nbsp;|&nbsp; Where: Settings</div>
+<div class="steps">
+<div class="step">In <b>Members</b>, enter the email, name and role.</div>
+<div class="step">Add. The invitation is emailed, and the link is shown so you can send it yourself.</div>
+</div></div>
+
+<div class="recipe"><h3>15. Onboard a trading partner end to end</h3>
+<div class="meta">Roles: customer admin, support &nbsp;|&nbsp; Where: Partners, Test files, Transactions</div>
+<div class="steps">
+<div class="step">Follow the six steps in Chapter 17.</div>
+<div class="step">Use Test files to build a test 850 or 856 if the partner needs a sample.</div>
+<div class="step">Filter Transactions to <b>Test</b>, trace each document and confirm the Ack column.</div>
+<div class="step">Add the 997 reminder rule and a failure alert before going to production.</div>
+</div></div>
+</div>
+
+<!-- 19 -->
+<div class="chapter" id="c19">
+<div class="num">Chapter 19</div>
+<h1>For platform administrators</h1>
+<p class="lead">United Techno platform administrators manage every organisation from one place.</p>
+
+<h3>Choosing an organisation</h3>
+<p>A selector in the top bar switches between organisations. All the pages in this guide then show that organisation's data.</p>
+
+<h3>Tenants</h3>
+<p>Create an organisation, connect its Orderful and Workato accounts, create ingestion keys, open ingestion with the readiness checks, and manage its members and settings.</p>
+
+<h3>API and health</h3>
+<table>
+<thead><tr><th>Tab</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td><b>Health</b></td><td>Database, message queue, migrations, each organisation's queue consumer, each background worker, and the work waiting. Refreshes every 15 seconds.</td></tr>
+<tr><td><b>Integrations (API, MCP, chat)</b></td><td>For the ingestion API, the MCP server, the assistant and Explain EDI: requests, failures and average time over 24 hours; traffic and keys per organisation; recent errors; the public addresses; and AI tokens and cost, with a 30-day table per organisation.</td></tr>
+<tr><td><b>API docs (Swagger)</b></td><td>Every endpoint with a Try it out button. Try it out makes real requests, so use it with care.</td></tr>
+</tbody></table>
+</div>
+
+<!-- 20 -->
+<div class="chapter" id="c20">
+<div class="num">Chapter 20</div>
+<h1>Reference: document types and terms</h1>
+
+<h3>Common X12 document types</h3>
+<table>
+<thead><tr><th>Code</th><th>Document</th><th>Main number shown</th></tr></thead>
+<tbody>
+<tr><td>850</td><td>Purchase order</td><td>PO number</td></tr>
+<tr><td>855</td><td>Purchase order acknowledgment</td><td>PO number</td></tr>
+<tr><td>860</td><td>Purchase order change</td><td>PO number</td></tr>
+<tr><td>865</td><td>Purchase order change acknowledgment</td><td>PO number</td></tr>
+<tr><td>856</td><td>Advance ship notice</td><td>Shipment number</td></tr>
+<tr><td>810</td><td>Invoice</td><td>Invoice number</td></tr>
+<tr><td>997</td><td>Functional acknowledgment</td><td>Control number</td></tr>
+<tr><td>204</td><td>Motor carrier load tender</td><td>Shipment number</td></tr>
+<tr><td>990</td><td>Response to a load tender</td><td>Shipment number</td></tr>
+<tr><td>214</td><td>Shipment status message</td><td>Shipment number</td></tr>
+<tr><td>210</td><td>Freight invoice</td><td>Invoice number</td></tr>
+<tr><td>940</td><td>Warehouse shipping order</td><td>Order number</td></tr>
+<tr><td>943</td><td>Warehouse stock transfer shipment advice</td><td>Order number</td></tr>
+<tr><td>944</td><td>Warehouse stock transfer receipt advice</td><td>Receipt number</td></tr>
+<tr><td>945</td><td>Warehouse shipping advice</td><td>Order number</td></tr>
+</tbody></table>
+
+<h3>Terms</h3>
+<table>
+<thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Inbound / Outbound</td><td>Inbound documents are received from a partner. Outbound documents are sent to a partner.</td></tr>
+<tr><td>Orderful</td><td>The EDI network that exchanges documents with your partners and validates them.</td></tr>
+<tr><td>Workato</td><td>The integration platform that moves and converts documents between Orderful and your ERP, using recipes.</td></tr>
+<tr><td>Recipe / job</td><td>A recipe is an automated workflow in Workato. A job is one run of a recipe.</td></tr>
+<tr><td>ERP</td><td>Your business system, for example SAP, that creates or receives the documents.</td></tr>
+<tr><td>997</td><td>A functional acknowledgment confirming that a document was received.</td></tr>
+<tr><td>ISA / GS</td><td>The envelope segments of an EDI file. Their control numbers identify an interchange or group.</td></tr>
+<tr><td>Transaction</td><td>One EDI document and its journey. EDI360 uses "document" and "transaction" for the same thing.</td></tr>
+<tr><td>Run</td><td>One processing of a document. A retry adds another run to the same document.</td></tr>
+<tr><td>Environment</td><td>Test or production.</td></tr>
+<tr><td>Tenant / organisation</td><td>One customer's separate space in EDI360.</td></tr>
+</tbody></table>
+
+<p style="margin-top:10mm"><small>EDI360 is provided by United Techno. For help with access or settings, contact your organisation's administrator.</small></p>
+</div>
+
+</body>
+</html>
