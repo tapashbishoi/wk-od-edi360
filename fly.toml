@@ -1,6 +1,6 @@
 # Test and demo environment. Create the app first:  fly apps create <name>
 # then put its name here (or pass -a <name>), set secrets, and run: fly deploy
-app = "edi360-test"
+app = "workato-edi360-demo"
 primary_region = "iad"
 
 [build]
