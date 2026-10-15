@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+~$*
+*.log
+
+# Customer payloads dropped for ingestion
+ingest-drop/
+
+# Local sample payload and old notes, kept out of the repo
+6235172_170_-1_payload.json
+edi_workato.docx

@@ -1,0 +1,192 @@
+{
+  "id": "j-AbsEMLA4-dgRxWE-CD",
+  "master_job_id": "j-Abs4gQCM-JQ4Tcc-CD",
+  "recipe_id": 82916895,
+  "title": "Workato FileStorage: new file: File name=855Accepte.txt, File path=/EDI/Outbound/855/855Accepte.txt, and File contents=40 bytes",
+  "status": "succeeded",
+  "is_repeat": true,
+  "is_test": true,
+  "is_test_case_job": false,
+  "started_at": "2026-10-08T21:27:46-07:00",
+  "completed_at": "2026-10-08T21:27:48-07:00",
+  "repeat_count": 3,
+  "action_count": 11,
+  "flow_id": 82916895,
+  "error_type": null,
+  "is_poll_error": false,
+  "account_id": 1897324,
+  "account_name": "United Techno Account",
+  "environment_type": "dev",
+  "environment_id": 1897324,
+  "hq_account_id": 1897324,
+  "hq_account_name": "United Techno Account",
+  "error": null,
+  "report": {},
+  "lines": [
+    {
+      "input": {
+        "dir_path": "EDI/Outbound/855",
+        "include_subdirs": "false"
+      },
+      "output": {
+        "content": "40 bytes",
+        "id": 1148313633,
+        "name": "855Accepte.txt",
+        "path": "/EDI/Outbound/855/855Accepte.txt",
+        "size": 40
+      },
+      "adapter_name": "workato_files",
+      "adapter_operation": "new_file",
+      "recipe_line_number": 0,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "col_sep": "|",
+        "column_value_by": "name",
+        "csv_content": "<csv content>",
+        "header_line": "orderNumber|acceptanceFlag",
+        "header_schema": "[{\"name\": \"orderNumber\", \"type\": \"string\"}, {\"name\": \"acceptanceFlag\", \"type\": \"string\"}]",
+        "quote_char": "\"",
+        "skip_first_line": "false"
+      },
+      "output": {
+        "lines": [
+          {
+            "column_0": "orderNumber",
+            "column_1": "acceptanceFlag"
+          },
+          {
+            "column_0": "100",
+            "column_1": "Accepted"
+          }
+        ]
+      },
+      "adapter_name": "csv_parser",
+      "adapter_operation": "parse_csv",
+      "recipe_line_number": 1,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "size": 2
+      },
+      "output": {
+        "index": 1,
+        "is_first": false,
+        "is_last": true,
+        "item": {
+          "column_0": "100",
+          "column_1": "Accepted"
+        }
+      },
+      "adapter_name": "misc",
+      "adapter_operation": "foreach",
+      "recipe_line_number": 2,
+      "mask_data": false
+    },
+    {
+      "input": {},
+      "output": {
+        "condition": true
+      },
+      "adapter_name": "misc",
+      "adapter_operation": "if",
+      "recipe_line_number": 3,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "name": "date_8",
+        "type": "string",
+        "value": "20261009"
+      },
+      "output": {
+        "value": "20261009"
+      },
+      "adapter_name": "workato_variable",
+      "adapter_operation": "declare_variable",
+      "recipe_line_number": 4,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "name": "date_6",
+        "type": "string",
+        "value": "261009"
+      },
+      "output": {
+        "value": "261009"
+      },
+      "adapter_name": "workato_variable",
+      "adapter_operation": "declare_variable",
+      "recipe_line_number": 5,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "name": "time_4",
+        "type": "string",
+        "value": "0427"
+      },
+      "output": {
+        "value": "0427"
+      },
+      "adapter_name": "workato_variable",
+      "adapter_operation": "declare_variable",
+      "recipe_line_number": 6,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "name": "ack_code",
+        "type": "string",
+        "value": "AP"
+      },
+      "output": {
+        "value": "AP"
+      },
+      "adapter_name": "workato_variable",
+      "adapter_operation": "declare_variable",
+      "recipe_line_number": 7,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "message": "{\"interchangeControlHeader\":[{\"authorizationInformationQualifier\":\"00\",\"authorizationInformation\":\"          \",\"securityInformationQualifier\":\"00\",\"securityInformation\":\"          \",\"interchangeIDQualifier\":\"ZZ\",\"interchangeSenderID\":\"UNITEDTECHNO   \",\"interchangeIDQualifier1\":\"ZZ\",\"interchangeReceiverID\":\"ODFLRETAILTEST \",\"interchangeDate\":\"261009\",\"interchangeTime\":\"0427\",\"repetitionSeparator\":\"^\",\"interchangeControlStandardsIdentifier\":\"U\",\"interchangeControlVersionNumberCode\":\"00401\",\"interchangeControlNumber\":\"000000003\",\"acknowledgmentRequestedCode\":\"0\",\"interchangeUsageIndicatorCode\":\"T\",\"componentElementSeparator\":\">\"}],\"functionalGroupHeader\":[{\"functionalIdentifierCode\":\"PR\",\"applicationSendersCode\":\"UNITEDTECHNO\",\"applicationReceiversCode\":\"ODFLRETAILTEST\",\"date\":\"20261009\",\"time\":\"0427\",\"groupControlNumber\":\"3\",\"responsibleAgencyCode\":\"X\",\"versionReleaseIndustryIdentifierCode\":\"004010\"}],\"transactionSets\":[{\"transactionSetHeader\":[{\"transactionSetIdentifierCode\":\"855\",\"transactionSetControlNumber\":\"0001\"}],\"beginningSegmentForPurchaseOrderAcknowledgment\":[{\"transactionSetPurposeCode\":\"00\",\"acknowledgmentTypeCode\":\"AP\",\"purchaseOrderNumber\":\"100\",\"date\":\"20261009\"}],\"PO1_loop\":[{\"baselineItemData\":[{\"assignedIdentification\":\"1\",\"quantity\":\"1\",\"unitOrBasisForMeasurementCode\":\"CA\",\"productServiceIDQualifier\":\"VN\",\"productServiceID\":\"12345678\"}],\"pricingInformation\":[{\"priceIdentifierCode\":\"LPR\",\"unitPrice\":\"1.00\"}],\"ACK_loop\":[{\"lineItemAcknowledgment\":[{\"lineItemStatusCode\":\"IA\",\"quantity\":\"1\",\"unitOrBasisForMeasurementCode\":\"CA\",\"dateTimeQualifier\":\"017\",\"date\":\"20261009\"}]}]}],\"CTT_loop\":[{\"transactionTotals\":[{\"numberOfLineItems\":\"1\"}]}],\"transactionSetTrailer\":[{\"numberOfIncludedSegments\":\"6\",\"transactionSetControlNumber\":\"0001\"}]}]}",
+        "object": "transaction",
+        "receiver": {
+          "isaId": "ODFLRETAILTEST"
+        },
+        "sender": {
+          "isaId": "UNITEDTECHNO"
+        },
+        "stream": "TEST",
+        "type": {
+          "name": "855_PURCHASE_ORDER_ACKNOWLEDGMENT"
+        }
+      },
+      "output": {
+        "id": "1072185498"
+      },
+      "adapter_name": "orderful_connector_1897324_1774864874",
+      "adapter_operation": "create_record",
+      "recipe_line_number": 8,
+      "mask_data": false
+    }
+  ],
+  "context": {
+    "user_id": 1897324,
+    "user_name": "United Techno Account",
+    "user_email": "workato@unitedtechno.com",
+    "recipe_id": 82916895,
+    "recipe_url": "https://app.workato.com/recipes/82916895",
+    "recipe_name": "Orderful EDI 850 to 855 Purchase Order Acknowledgment",
+    "recipe_path": "Home/EDI",
+    "is_test": true,
+    "user_external_id": null
+  },
+  "job_url": "https://app.workato.com/recipes/82916895/job/j-AbsEKCXF-t3r8Tn-CD?child_job_id=j-AbsEMLA4-dgRxWE-CD",
+  "root_job_id": "",
+  "root_recipe_id": 0
+}

@@ -1,0 +1,1497 @@
+{
+  "id": "j-AbrBGNTG-mGCtRa-CD",
+  "master_job_id": "j-Abr4e363-PYRERD-CD",
+  "recipe_id": 82858874,
+  "title": "Orderful: new transactions from poller bucket: Transaction ID=861041851, URL=https://api.orderful.com/v3/transactions/861041851?expand=message, and Interchange control header (ISA) ID=ODFLRETAILTEST",
+  "status": "failed",
+  "is_repeat": true,
+  "is_test": true,
+  "is_test_case_job": false,
+  "started_at": "2026-10-06T20:24:44-07:00",
+  "completed_at": "2026-10-06T20:24:46-07:00",
+  "repeat_count": 3,
+  "action_count": 3,
+  "flow_id": 82858874,
+  "error_type": "Exception",
+  "is_poll_error": false,
+  "account_id": 1897324,
+  "account_name": "United Techno Account",
+  "environment_type": "dev",
+  "environment_id": 1897324,
+  "hq_account_id": 1897324,
+  "hq_account_name": "United Techno Account",
+  "error": "{\"message\":\"400 Bad Request: {\\\"type\\\":\\\"argumentError\\\",\\\"ref\\\":\\\"deliveryId\\\",\\\"message\\\":\\\"The delivery status is DELIVERED and can't be confirmed again.\\\"} at line: 570\",\"inner_message\":null}",
+  "report": {
+    "custom_column_0": "PO5776275333276666",
+    "custom_column_1": "ODFLRETAILTEST"
+  },
+  "lines": [
+    {
+      "input": {
+        "bucketId": "59572"
+      },
+      "output": {
+        "transactions": [
+          {
+            "acknowledgment": {
+              "href": "https://api.orderful.com/v3/transactions/861041851/acknowledgment"
+            },
+            "acknowledgmentStatus": "ACCEPTED",
+            "businessNumber": "PO5776275333276666",
+            "createdAt": "2026-03-22T10:09:59.202000+00:00",
+            "delivery": {
+              "approve": {
+                "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27/approve"
+              },
+              "fail": {
+                "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27/fail"
+              },
+              "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27",
+              "id": "006ae0f0-3f8b-453a-a0bf-713543e78e27"
+            },
+            "deliveryStatus": "SENT",
+            "href": "https://api.orderful.com/v3/transactions/861041851?expand=message",
+            "id": "861041851",
+            "lastUpdatedAt": "2026-03-22T10:14:06.874000+00:00",
+            "message": {
+              "functionalGroupHeader": [
+                {
+                  "applicationReceiversCode": "UNITEDTECHNO",
+                  "applicationSendersCode": "ODFLRETAILTEST",
+                  "date": "20260311",
+                  "functionalIdentifierCode": "PO",
+                  "groupControlNumber": "000000010",
+                  "responsibleAgencyCode": "X",
+                  "time": "1112",
+                  "versionReleaseIndustryIdentifierCode": "004010"
+                }
+              ],
+              "href": "https://api.orderful.com/v3/transactions/861041851/message",
+              "interchangeControlHeader": [
+                {
+                  "acknowledgmentRequestedCode": "0",
+                  "authorizationInformation": "          ",
+                  "authorizationInformationQualifier": "00",
+                  "componentElementSeparator": ">",
+                  "interchangeControlNumber": "000000010",
+                  "interchangeControlStandardsIdentifier": "^",
+                  "interchangeControlVersionNumberCode": "00501",
+                  "interchangeDate": "260311",
+                  "interchangeIDQualifier": "ZZ",
+                  "interchangeIDQualifier1": "ZZ",
+                  "interchangeReceiverID": "UNITEDTECHNO   ",
+                  "interchangeSenderID": "ODFLRETAILTEST ",
+                  "interchangeTime": "2113",
+                  "interchangeUsageIndicatorCode": "T",
+                  "securityInformation": "          ",
+                  "securityInformationQualifier": "00"
+                }
+              ],
+              "transactionSets": [
+                {
+                  "CTT_loop": [
+                    {
+                      "transactionTotals": [
+                        {
+                          "hashTotal": "45",
+                          "numberOfLineItems": "5"
+                        }
+                      ]
+                    }
+                  ],
+                  "FOBRelatedInstructions": [
+                    {
+                      "shipmentMethodOfPaymentCode": "DF"
+                    }
+                  ],
+                  "N1_loop": [
+                    {
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "BY",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ]
+                    },
+                    {
+                      "geographicLocation": [
+                        {
+                          "cityName": "NEW YORK",
+                          "countryCode": "US",
+                          "postalCode": "10001",
+                          "stateOrProvinceCode": "NY"
+                        }
+                      ],
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "ST",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ],
+                      "partyLocation": [
+                        {
+                          "addressInformation": "4055 MAIN ST"
+                        }
+                      ]
+                    },
+                    {
+                      "geographicLocation": [
+                        {
+                          "cityName": "NEW YORK",
+                          "countryCode": "US",
+                          "postalCode": "10001",
+                          "stateOrProvinceCode": "NY"
+                        }
+                      ],
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "BT",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ],
+                      "partyLocation": [
+                        {
+                          "addressInformation": "4055 MAIN ST"
+                        }
+                      ]
+                    }
+                  ],
+                  "PO1_loop": [
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "1",
+                          "productServiceID": "ORDERFUL-TEST-SKU-001",
+                          "productServiceID1": "012345678001",
+                          "productServiceID2": "012345678001",
+                          "productServiceID3": "012345678001",
+                          "productServiceID4": "012345678001",
+                          "productServiceID5": "012345678001",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "2",
+                          "productServiceID": "ORDERFUL-TEST-SKU-002",
+                          "productServiceID1": "012345678002",
+                          "productServiceID2": "012345678002",
+                          "productServiceID3": "012345678002",
+                          "productServiceID4": "012345678002",
+                          "productServiceID5": "012345678002",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "20",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "3",
+                          "productServiceID": "ORDERFUL-TEST-SKU-003",
+                          "productServiceID1": "012345678003",
+                          "productServiceID2": "012345678003",
+                          "productServiceID3": "012345678003",
+                          "productServiceID4": "012345678003",
+                          "productServiceID5": "012345678003",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "4",
+                          "productServiceID": "ORDERFUL-TEST-SKU-004",
+                          "productServiceID1": "012345678004",
+                          "productServiceID2": "012345678004",
+                          "productServiceID3": "012345678004",
+                          "productServiceID4": "012345678004",
+                          "productServiceID5": "012345678004",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "10",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "5",
+                          "productServiceID": "ORDERFUL-TEST-SKU-005",
+                          "productServiceID1": "012345678005",
+                          "productServiceID2": "012345678005",
+                          "productServiceID3": "012345678005",
+                          "productServiceID4": "012345678005",
+                          "productServiceID5": "012345678005",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    }
+                  ],
+                  "SAC_loop": [
+                    {
+                      "servicePromotionAllowanceOrChargeInformation": [
+                        {
+                          "allowanceChargePercentQualifier": "ZZ",
+                          "allowanceOrChargeIndicatorCode": "C",
+                          "amount": "179.91",
+                          "description": "Freight Charge",
+                          "servicePromotionAllowanceOrChargeCode": "D240"
+                        }
+                      ]
+                    },
+                    {
+                      "servicePromotionAllowanceOrChargeInformation": [
+                        {
+                          "allowanceChargePercentQualifier": "ZZ",
+                          "allowanceOrChargeIndicatorCode": "A",
+                          "amount": "44.9775",
+                          "description": "Discount",
+                          "servicePromotionAllowanceOrChargeCode": "F810"
+                        }
+                      ]
+                    }
+                  ],
+                  "beginningSegmentForPurchaseOrder": [
+                    {
+                      "date": "20260311",
+                      "purchaseOrderNumber": "PO5776275333276666",
+                      "purchaseOrderTypeCode": "SA",
+                      "transactionSetPurposeCode": "00"
+                    }
+                  ],
+                  "carrierDetailsRoutingSequenceTransitTime": [
+                    {
+                      "routing": "2"
+                    }
+                  ],
+                  "dateTimeReference": [
+                    {
+                      "date": "20260316",
+                      "dateTimeQualifier": "037"
+                    },
+                    {
+                      "date": "20260321",
+                      "dateTimeQualifier": "038"
+                    }
+                  ],
+                  "referenceInformation": [
+                    {
+                      "referenceIdentification": "4783736",
+                      "referenceIdentificationQualifier": "IA"
+                    },
+                    {
+                      "referenceIdentification": "011",
+                      "referenceIdentificationQualifier": "DP"
+                    }
+                  ],
+                  "salesRequirements": [
+                    {
+                      "salesRequirementCode": "N"
+                    }
+                  ],
+                  "termsOfSaleDeferredTermsOfSale": [
+                    {
+                      "description": "Net 45 Days",
+                      "termsBasisDateCode": "2",
+                      "termsDiscountDaysDue": "45",
+                      "termsDiscountPercent": "1",
+                      "termsTypeCode": "01"
+                    }
+                  ],
+                  "transactionSetHeader": [
+                    {
+                      "transactionSetControlNumber": "0001",
+                      "transactionSetIdentifierCode": "850"
+                    }
+                  ],
+                  "transactionSetTrailer": [
+                    {
+                      "numberOfIncludedSegments": "36",
+                      "transactionSetControlNumber": "0001"
+                    }
+                  ]
+                }
+              ]
+            },
+            "receiver": {
+              "isaId": "UNITEDTECHNO",
+              "isaIdQualifier": "ZZ",
+              "name": "United Techno Demo",
+              "testIsaId": "UNITEDTECHNO",
+              "testIsaIdQualifier": "ZZ"
+            },
+            "referenceIdentifiers": [
+              {
+                "owner": "SENDER",
+                "type": "GROUP",
+                "value": "000000010"
+              },
+              {
+                "owner": "SENDER",
+                "type": "INTERCHANGE",
+                "value": "000000010"
+              },
+              {
+                "owner": "SENDER",
+                "type": "TRANSACTION",
+                "value": "0001"
+              }
+            ],
+            "sender": {
+              "isaId": "ODFLRETAILTEST",
+              "isaIdQualifier": "ZZ",
+              "name": "Retail Integration Testing",
+              "testIsaId": "ODFLRETAILTEST",
+              "testIsaIdQualifier": "ZZ"
+            },
+            "stream": "TEST",
+            "type": {
+              "name": "850_PURCHASE_ORDER"
+            },
+            "validationStatus": "VALID",
+            "version": "v3"
+          },
+          {
+            "acknowledgment": {
+              "href": "https://api.orderful.com/v3/transactions/861044669/acknowledgment"
+            },
+            "acknowledgmentStatus": "ACCEPTED",
+            "businessNumber": "PO5776275333276666",
+            "createdAt": "2026-03-22T10:17:17.698000+00:00",
+            "delivery": {
+              "approve": {
+                "href": "https://api.orderful.com/v3/deliveries/edbbeb27-e7cd-4b1c-b0d5-0e20a2f0eb3e/approve"
+              },
+              "fail": {
+                "href": "https://api.orderful.com/v3/deliveries/edbbeb27-e7cd-4b1c-b0d5-0e20a2f0eb3e/fail"
+              },
+              "href": "https://api.orderful.com/v3/deliveries/edbbeb27-e7cd-4b1c-b0d5-0e20a2f0eb3e",
+              "id": "edbbeb27-e7cd-4b1c-b0d5-0e20a2f0eb3e"
+            },
+            "deliveryStatus": "SENT",
+            "href": "https://api.orderful.com/v3/transactions/861044669?expand=message",
+            "id": "861044669",
+            "lastUpdatedAt": "2026-03-22T10:20:01.171000+00:00",
+            "message": {
+              "functionalGroupHeader": [
+                {
+                  "applicationReceiversCode": "UNITEDTECHNO",
+                  "applicationSendersCode": "ODFLRETAILTEST",
+                  "date": "20260311",
+                  "functionalIdentifierCode": "PO",
+                  "groupControlNumber": "000000010",
+                  "responsibleAgencyCode": "X",
+                  "time": "1112",
+                  "versionReleaseIndustryIdentifierCode": "004010"
+                }
+              ],
+              "href": "https://api.orderful.com/v3/transactions/861044669/message",
+              "interchangeControlHeader": [
+                {
+                  "acknowledgmentRequestedCode": "0",
+                  "authorizationInformation": "          ",
+                  "authorizationInformationQualifier": "00",
+                  "componentElementSeparator": ">",
+                  "interchangeControlNumber": "000000010",
+                  "interchangeControlStandardsIdentifier": "^",
+                  "interchangeControlVersionNumberCode": "00501",
+                  "interchangeDate": "260311",
+                  "interchangeIDQualifier": "ZZ",
+                  "interchangeIDQualifier1": "ZZ",
+                  "interchangeReceiverID": "UNITEDTECHNO   ",
+                  "interchangeSenderID": "ODFLRETAILTEST ",
+                  "interchangeTime": "2113",
+                  "interchangeUsageIndicatorCode": "T",
+                  "securityInformation": "          ",
+                  "securityInformationQualifier": "00"
+                }
+              ],
+              "transactionSets": [
+                {
+                  "CTT_loop": [
+                    {
+                      "transactionTotals": [
+                        {
+                          "hashTotal": "45",
+                          "numberOfLineItems": "5"
+                        }
+                      ]
+                    }
+                  ],
+                  "FOBRelatedInstructions": [
+                    {
+                      "shipmentMethodOfPaymentCode": "DF"
+                    }
+                  ],
+                  "N1_loop": [
+                    {
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "BY",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ]
+                    },
+                    {
+                      "geographicLocation": [
+                        {
+                          "cityName": "NEW YORK",
+                          "countryCode": "US",
+                          "postalCode": "10001",
+                          "stateOrProvinceCode": "NY"
+                        }
+                      ],
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "ST",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ],
+                      "partyLocation": [
+                        {
+                          "addressInformation": "4055 MAIN ST"
+                        }
+                      ]
+                    },
+                    {
+                      "geographicLocation": [
+                        {
+                          "cityName": "NEW YORK",
+                          "countryCode": "US",
+                          "postalCode": "10001",
+                          "stateOrProvinceCode": "NY"
+                        }
+                      ],
+                      "partyIdentification": [
+                        {
+                          "entityIdentifierCode": "BT",
+                          "identificationCode": "5438",
+                          "identificationCodeQualifier": "92",
+                          "name": "Retail Integration Testing"
+                        }
+                      ],
+                      "partyLocation": [
+                        {
+                          "addressInformation": "4055 MAIN ST"
+                        }
+                      ]
+                    }
+                  ],
+                  "PO1_loop": [
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "1",
+                          "productServiceID": "ORDERFUL-TEST-SKU-001",
+                          "productServiceID1": "012345678001",
+                          "productServiceID2": "012345678001",
+                          "productServiceID3": "012345678001",
+                          "productServiceID4": "012345678001",
+                          "productServiceID5": "012345678001",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "2",
+                          "productServiceID": "ORDERFUL-TEST-SKU-002",
+                          "productServiceID1": "012345678002",
+                          "productServiceID2": "012345678002",
+                          "productServiceID3": "012345678002",
+                          "productServiceID4": "012345678002",
+                          "productServiceID5": "012345678002",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "20",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "3",
+                          "productServiceID": "ORDERFUL-TEST-SKU-003",
+                          "productServiceID1": "012345678003",
+                          "productServiceID2": "012345678003",
+                          "productServiceID3": "012345678003",
+                          "productServiceID4": "012345678003",
+                          "productServiceID5": "012345678003",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "4",
+                          "productServiceID": "ORDERFUL-TEST-SKU-004",
+                          "productServiceID1": "012345678004",
+                          "productServiceID2": "012345678004",
+                          "productServiceID3": "012345678004",
+                          "productServiceID4": "012345678004",
+                          "productServiceID5": "012345678004",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "10",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "PID_loop": [
+                        {
+                          "productItemDescription": [
+                            {
+                              "description": "Placeholder product for scenario testing",
+                              "itemDescriptionTypeCode": "F",
+                              "productProcessCharacteristicCode": "08"
+                            }
+                          ]
+                        }
+                      ],
+                      "baselineItemData": [
+                        {
+                          "assignedIdentification": "5",
+                          "productServiceID": "ORDERFUL-TEST-SKU-005",
+                          "productServiceID1": "012345678005",
+                          "productServiceID2": "012345678005",
+                          "productServiceID3": "012345678005",
+                          "productServiceID4": "012345678005",
+                          "productServiceID5": "012345678005",
+                          "productServiceIDQualifier": "SK",
+                          "productServiceIDQualifier1": "UP",
+                          "productServiceIDQualifier2": "UA",
+                          "productServiceIDQualifier3": "UC",
+                          "productServiceIDQualifier4": "UI",
+                          "productServiceIDQualifier5": "UJ",
+                          "quantity": "5",
+                          "unitOrBasisForMeasurementCode": "EA",
+                          "unitPrice": "19.99"
+                        }
+                      ],
+                      "itemPhysicalDetails": [
+                        {
+                          "innerPack": "1",
+                          "pack": "1"
+                        }
+                      ]
+                    }
+                  ],
+                  "SAC_loop": [
+                    {
+                      "servicePromotionAllowanceOrChargeInformation": [
+                        {
+                          "allowanceChargePercentQualifier": "ZZ",
+                          "allowanceOrChargeIndicatorCode": "C",
+                          "amount": "179.91",
+                          "description": "Freight Charge",
+                          "servicePromotionAllowanceOrChargeCode": "D240"
+                        }
+                      ]
+                    },
+                    {
+                      "servicePromotionAllowanceOrChargeInformation": [
+                        {
+                          "allowanceChargePercentQualifier": "ZZ",
+                          "allowanceOrChargeIndicatorCode": "A",
+                          "amount": "44.9775",
+                          "description": "Discount",
+                          "servicePromotionAllowanceOrChargeCode": "F810"
+                        }
+                      ]
+                    }
+                  ],
+                  "beginningSegmentForPurchaseOrder": [
+                    {
+                      "date": "20260311",
+                      "purchaseOrderNumber": "PO5776275333276666",
+                      "purchaseOrderTypeCode": "SA",
+                      "transactionSetPurposeCode": "00"
+                    }
+                  ],
+                  "carrierDetailsRoutingSequenceTransitTime": [
+                    {
+                      "routing": "2"
+                    }
+                  ],
+                  "dateTimeReference": [
+                    {
+                      "date": "20260316",
+                      "dateTimeQualifier": "037"
+                    },
+                    {
+                      "date": "20260321",
+                      "dateTimeQualifier": "038"
+                    }
+                  ],
+                  "referenceInformation": [
+                    {
+                      "referenceIdentification": "4783736",
+                      "referenceIdentificationQualifier": "IA"
+                    },
+                    {
+                      "referenceIdentification": "011",
+                      "referenceIdentificationQualifier": "DP"
+                    }
+                  ],
+                  "salesRequirements": [
+                    {
+                      "salesRequirementCode": "N"
+                    }
+                  ],
+                  "termsOfSaleDeferredTermsOfSale": [
+                    {
+                      "description": "Net 45 Days",
+                      "termsBasisDateCode": "2",
+                      "termsDiscountDaysDue": "45",
+                      "termsDiscountPercent": "1",
+                      "termsTypeCode": "01"
+                    }
+                  ],
+                  "transactionSetHeader": [
+                    {
+                      "transactionSetControlNumber": "0001",
+                      "transactionSetIdentifierCode": "850"
+                    }
+                  ],
+                  "transactionSetTrailer": [
+                    {
+                      "numberOfIncludedSegments": "36",
+                      "transactionSetControlNumber": "0001"
+                    }
+                  ]
+                }
+              ]
+            },
+            "receiver": {
+              "isaId": "UNITEDTECHNO",
+              "isaIdQualifier": "ZZ",
+              "name": "United Techno Demo",
+              "testIsaId": "UNITEDTECHNO",
+              "testIsaIdQualifier": "ZZ"
+            },
+            "referenceIdentifiers": [
+              {
+                "owner": "SENDER",
+                "type": "GROUP",
+                "value": "000000010"
+              },
+              {
+                "owner": "SENDER",
+                "type": "INTERCHANGE",
+                "value": "000000010"
+              },
+              {
+                "owner": "SENDER",
+                "type": "TRANSACTION",
+                "value": "0001"
+              }
+            ],
+            "sender": {
+              "isaId": "ODFLRETAILTEST",
+              "isaIdQualifier": "ZZ",
+              "name": "Retail Integration Testing",
+              "testIsaId": "ODFLRETAILTEST",
+              "testIsaIdQualifier": "ZZ"
+            },
+            "stream": "TEST",
+            "type": {
+              "name": "850_PURCHASE_ORDER"
+            },
+            "validationStatus": "VALID",
+            "version": "v3"
+          }
+        ]
+      },
+      "adapter_name": "orderful_connector_1897324_1774864874",
+      "adapter_operation": "new_transactions_from_poller_bucket",
+      "recipe_line_number": 0,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "size": 2
+      },
+      "output": {
+        "index": 0,
+        "is_first": true,
+        "is_last": false,
+        "item": {
+          "acknowledgment": {
+            "href": "https://api.orderful.com/v3/transactions/861041851/acknowledgment"
+          },
+          "acknowledgmentStatus": "ACCEPTED",
+          "businessNumber": "PO5776275333276666",
+          "createdAt": "2026-03-22T10:09:59.202000+00:00",
+          "delivery": {
+            "approve": {
+              "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27/approve"
+            },
+            "fail": {
+              "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27/fail"
+            },
+            "href": "https://api.orderful.com/v3/deliveries/006ae0f0-3f8b-453a-a0bf-713543e78e27",
+            "id": "006ae0f0-3f8b-453a-a0bf-713543e78e27"
+          },
+          "deliveryStatus": "SENT",
+          "href": "https://api.orderful.com/v3/transactions/861041851?expand=message",
+          "id": "861041851",
+          "lastUpdatedAt": "2026-03-22T10:14:06.874000+00:00",
+          "message": {
+            "functionalGroupHeader": [
+              {
+                "applicationReceiversCode": "UNITEDTECHNO",
+                "applicationSendersCode": "ODFLRETAILTEST",
+                "date": "20260311",
+                "functionalIdentifierCode": "PO",
+                "groupControlNumber": "000000010",
+                "responsibleAgencyCode": "X",
+                "time": "1112",
+                "versionReleaseIndustryIdentifierCode": "004010"
+              }
+            ],
+            "href": "https://api.orderful.com/v3/transactions/861041851/message",
+            "interchangeControlHeader": [
+              {
+                "acknowledgmentRequestedCode": "0",
+                "authorizationInformation": "          ",
+                "authorizationInformationQualifier": "00",
+                "componentElementSeparator": ">",
+                "interchangeControlNumber": "000000010",
+                "interchangeControlStandardsIdentifier": "^",
+                "interchangeControlVersionNumberCode": "00501",
+                "interchangeDate": "260311",
+                "interchangeIDQualifier": "ZZ",
+                "interchangeIDQualifier1": "ZZ",
+                "interchangeReceiverID": "UNITEDTECHNO   ",
+                "interchangeSenderID": "ODFLRETAILTEST ",
+                "interchangeTime": "2113",
+                "interchangeUsageIndicatorCode": "T",
+                "securityInformation": "          ",
+                "securityInformationQualifier": "00"
+              }
+            ],
+            "transactionSets": [
+              {
+                "CTT_loop": [
+                  {
+                    "transactionTotals": [
+                      {
+                        "hashTotal": "45",
+                        "numberOfLineItems": "5"
+                      }
+                    ]
+                  }
+                ],
+                "FOBRelatedInstructions": [
+                  {
+                    "shipmentMethodOfPaymentCode": "DF"
+                  }
+                ],
+                "N1_loop": [
+                  {
+                    "partyIdentification": [
+                      {
+                        "entityIdentifierCode": "BY",
+                        "identificationCode": "5438",
+                        "identificationCodeQualifier": "92",
+                        "name": "Retail Integration Testing"
+                      }
+                    ]
+                  },
+                  {
+                    "geographicLocation": [
+                      {
+                        "cityName": "NEW YORK",
+                        "countryCode": "US",
+                        "postalCode": "10001",
+                        "stateOrProvinceCode": "NY"
+                      }
+                    ],
+                    "partyIdentification": [
+                      {
+                        "entityIdentifierCode": "ST",
+                        "identificationCode": "5438",
+                        "identificationCodeQualifier": "92",
+                        "name": "Retail Integration Testing"
+                      }
+                    ],
+                    "partyLocation": [
+                      {
+                        "addressInformation": "4055 MAIN ST"
+                      }
+                    ]
+                  },
+                  {
+                    "geographicLocation": [
+                      {
+                        "cityName": "NEW YORK",
+                        "countryCode": "US",
+                        "postalCode": "10001",
+                        "stateOrProvinceCode": "NY"
+                      }
+                    ],
+                    "partyIdentification": [
+                      {
+                        "entityIdentifierCode": "BT",
+                        "identificationCode": "5438",
+                        "identificationCodeQualifier": "92",
+                        "name": "Retail Integration Testing"
+                      }
+                    ],
+                    "partyLocation": [
+                      {
+                        "addressInformation": "4055 MAIN ST"
+                      }
+                    ]
+                  }
+                ],
+                "PO1_loop": [
+                  {
+                    "PID_loop": [
+                      {
+                        "productItemDescription": [
+                          {
+                            "description": "Placeholder product for scenario testing",
+                            "itemDescriptionTypeCode": "F",
+                            "productProcessCharacteristicCode": "08"
+                          }
+                        ]
+                      }
+                    ],
+                    "baselineItemData": [
+                      {
+                        "assignedIdentification": "1",
+                        "productServiceID": "ORDERFUL-TEST-SKU-001",
+                        "productServiceID1": "012345678001",
+                        "productServiceID2": "012345678001",
+                        "productServiceID3": "012345678001",
+                        "productServiceID4": "012345678001",
+                        "productServiceID5": "012345678001",
+                        "productServiceIDQualifier": "SK",
+                        "productServiceIDQualifier1": "UP",
+                        "productServiceIDQualifier2": "UA",
+                        "productServiceIDQualifier3": "UC",
+                        "productServiceIDQualifier4": "UI",
+                        "productServiceIDQualifier5": "UJ",
+                        "quantity": "5",
+                        "unitOrBasisForMeasurementCode": "EA",
+                        "unitPrice": "19.99"
+                      }
+                    ],
+                    "itemPhysicalDetails": [
+                      {
+                        "innerPack": "1",
+                        "pack": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "PID_loop": [
+                      {
+                        "productItemDescription": [
+                          {
+                            "description": "Placeholder product for scenario testing",
+                            "itemDescriptionTypeCode": "F",
+                            "productProcessCharacteristicCode": "08"
+                          }
+                        ]
+                      }
+                    ],
+                    "baselineItemData": [
+                      {
+                        "assignedIdentification": "2",
+                        "productServiceID": "ORDERFUL-TEST-SKU-002",
+                        "productServiceID1": "012345678002",
+                        "productServiceID2": "012345678002",
+                        "productServiceID3": "012345678002",
+                        "productServiceID4": "012345678002",
+                        "productServiceID5": "012345678002",
+                        "productServiceIDQualifier": "SK",
+                        "productServiceIDQualifier1": "UP",
+                        "productServiceIDQualifier2": "UA",
+                        "productServiceIDQualifier3": "UC",
+                        "productServiceIDQualifier4": "UI",
+                        "productServiceIDQualifier5": "UJ",
+                        "quantity": "20",
+                        "unitOrBasisForMeasurementCode": "EA",
+                        "unitPrice": "19.99"
+                      }
+                    ],
+                    "itemPhysicalDetails": [
+                      {
+                        "innerPack": "1",
+                        "pack": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "PID_loop": [
+                      {
+                        "productItemDescription": [
+                          {
+                            "description": "Placeholder product for scenario testing",
+                            "itemDescriptionTypeCode": "F",
+                            "productProcessCharacteristicCode": "08"
+                          }
+                        ]
+                      }
+                    ],
+                    "baselineItemData": [
+                      {
+                        "assignedIdentification": "3",
+                        "productServiceID": "ORDERFUL-TEST-SKU-003",
+                        "productServiceID1": "012345678003",
+                        "productServiceID2": "012345678003",
+                        "productServiceID3": "012345678003",
+                        "productServiceID4": "012345678003",
+                        "productServiceID5": "012345678003",
+                        "productServiceIDQualifier": "SK",
+                        "productServiceIDQualifier1": "UP",
+                        "productServiceIDQualifier2": "UA",
+                        "productServiceIDQualifier3": "UC",
+                        "productServiceIDQualifier4": "UI",
+                        "productServiceIDQualifier5": "UJ",
+                        "quantity": "5",
+                        "unitOrBasisForMeasurementCode": "EA",
+                        "unitPrice": "19.99"
+                      }
+                    ],
+                    "itemPhysicalDetails": [
+                      {
+                        "innerPack": "1",
+                        "pack": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "PID_loop": [
+                      {
+                        "productItemDescription": [
+                          {
+                            "description": "Placeholder product for scenario testing",
+                            "itemDescriptionTypeCode": "F",
+                            "productProcessCharacteristicCode": "08"
+                          }
+                        ]
+                      }
+                    ],
+                    "baselineItemData": [
+                      {
+                        "assignedIdentification": "4",
+                        "productServiceID": "ORDERFUL-TEST-SKU-004",
+                        "productServiceID1": "012345678004",
+                        "productServiceID2": "012345678004",
+                        "productServiceID3": "012345678004",
+                        "productServiceID4": "012345678004",
+                        "productServiceID5": "012345678004",
+                        "productServiceIDQualifier": "SK",
+                        "productServiceIDQualifier1": "UP",
+                        "productServiceIDQualifier2": "UA",
+                        "productServiceIDQualifier3": "UC",
+                        "productServiceIDQualifier4": "UI",
+                        "productServiceIDQualifier5": "UJ",
+                        "quantity": "10",
+                        "unitOrBasisForMeasurementCode": "EA",
+                        "unitPrice": "19.99"
+                      }
+                    ],
+                    "itemPhysicalDetails": [
+                      {
+                        "innerPack": "1",
+                        "pack": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "PID_loop": [
+                      {
+                        "productItemDescription": [
+                          {
+                            "description": "Placeholder product for scenario testing",
+                            "itemDescriptionTypeCode": "F",
+                            "productProcessCharacteristicCode": "08"
+                          }
+                        ]
+                      }
+                    ],
+                    "baselineItemData": [
+                      {
+                        "assignedIdentification": "5",
+                        "productServiceID": "ORDERFUL-TEST-SKU-005",
+                        "productServiceID1": "012345678005",
+                        "productServiceID2": "012345678005",
+                        "productServiceID3": "012345678005",
+                        "productServiceID4": "012345678005",
+                        "productServiceID5": "012345678005",
+                        "productServiceIDQualifier": "SK",
+                        "productServiceIDQualifier1": "UP",
+                        "productServiceIDQualifier2": "UA",
+                        "productServiceIDQualifier3": "UC",
+                        "productServiceIDQualifier4": "UI",
+                        "productServiceIDQualifier5": "UJ",
+                        "quantity": "5",
+                        "unitOrBasisForMeasurementCode": "EA",
+                        "unitPrice": "19.99"
+                      }
+                    ],
+                    "itemPhysicalDetails": [
+                      {
+                        "innerPack": "1",
+                        "pack": "1"
+                      }
+                    ]
+                  }
+                ],
+                "SAC_loop": [
+                  {
+                    "servicePromotionAllowanceOrChargeInformation": [
+                      {
+                        "allowanceChargePercentQualifier": "ZZ",
+                        "allowanceOrChargeIndicatorCode": "C",
+                        "amount": "179.91",
+                        "description": "Freight Charge",
+                        "servicePromotionAllowanceOrChargeCode": "D240"
+                      }
+                    ]
+                  },
+                  {
+                    "servicePromotionAllowanceOrChargeInformation": [
+                      {
+                        "allowanceChargePercentQualifier": "ZZ",
+                        "allowanceOrChargeIndicatorCode": "A",
+                        "amount": "44.9775",
+                        "description": "Discount",
+                        "servicePromotionAllowanceOrChargeCode": "F810"
+                      }
+                    ]
+                  }
+                ],
+                "beginningSegmentForPurchaseOrder": [
+                  {
+                    "date": "20260311",
+                    "purchaseOrderNumber": "PO5776275333276666",
+                    "purchaseOrderTypeCode": "SA",
+                    "transactionSetPurposeCode": "00"
+                  }
+                ],
+                "carrierDetailsRoutingSequenceTransitTime": [
+                  {
+                    "routing": "2"
+                  }
+                ],
+                "dateTimeReference": [
+                  {
+                    "date": "20260316",
+                    "dateTimeQualifier": "037"
+                  },
+                  {
+                    "date": "20260321",
+                    "dateTimeQualifier": "038"
+                  }
+                ],
+                "referenceInformation": [
+                  {
+                    "referenceIdentification": "4783736",
+                    "referenceIdentificationQualifier": "IA"
+                  },
+                  {
+                    "referenceIdentification": "011",
+                    "referenceIdentificationQualifier": "DP"
+                  }
+                ],
+                "salesRequirements": [
+                  {
+                    "salesRequirementCode": "N"
+                  }
+                ],
+                "termsOfSaleDeferredTermsOfSale": [
+                  {
+                    "description": "Net 45 Days",
+                    "termsBasisDateCode": "2",
+                    "termsDiscountDaysDue": "45",
+                    "termsDiscountPercent": "1",
+                    "termsTypeCode": "01"
+                  }
+                ],
+                "transactionSetHeader": [
+                  {
+                    "transactionSetControlNumber": "0001",
+                    "transactionSetIdentifierCode": "850"
+                  }
+                ],
+                "transactionSetTrailer": [
+                  {
+                    "numberOfIncludedSegments": "36",
+                    "transactionSetControlNumber": "0001"
+                  }
+                ]
+              }
+            ]
+          },
+          "receiver": {
+            "isaId": "UNITEDTECHNO",
+            "isaIdQualifier": "ZZ",
+            "name": "United Techno Demo",
+            "testIsaId": "UNITEDTECHNO",
+            "testIsaIdQualifier": "ZZ"
+          },
+          "referenceIdentifiers": [
+            {
+              "owner": "SENDER",
+              "type": "GROUP",
+              "value": "000000010"
+            },
+            {
+              "owner": "SENDER",
+              "type": "INTERCHANGE",
+              "value": "000000010"
+            },
+            {
+              "owner": "SENDER",
+              "type": "TRANSACTION",
+              "value": "0001"
+            }
+          ],
+          "sender": {
+            "isaId": "ODFLRETAILTEST",
+            "isaIdQualifier": "ZZ",
+            "name": "Retail Integration Testing",
+            "testIsaId": "ODFLRETAILTEST",
+            "testIsaIdQualifier": "ZZ"
+          },
+          "stream": "TEST",
+          "type": {
+            "name": "850_PURCHASE_ORDER"
+          },
+          "validationStatus": "VALID",
+          "version": "v3"
+        }
+      },
+      "adapter_name": "misc",
+      "adapter_operation": "foreach",
+      "recipe_line_number": 1,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "id": "861041851",
+        "object": "message"
+      },
+      "output": {
+        "transaction_message": "{\"interchangeControlHeader\":[{\"authorizationInformationQualifier\":\"00\",\"authorizationInformation\":\"          \",\"securityInformationQualifier\":\"00\",\"securityInformation\":\"          \",\"interchangeIDQualifier\":\"ZZ\",\"interchangeSenderID\":\"ODFLRETAILTEST \",\"interchangeIDQualifier1\":\"ZZ\",\"interchangeReceiverID\":\"UNITEDTECHNO   \",\"interchangeDate\":\"260311\",\"interchangeTime\":\"2113\",\"interchangeControlStandardsIdentifier\":\"^\",\"interchangeControlVersionNumberCode\":\"00501\",\"interchangeControlNumber\":\"000000010\",\"acknowledgmentRequestedCode\":\"0\",\"interchangeUsageIndicatorCode\":\"T\",\"componentElementSeparator\":\"\\u003e\"}],\"functionalGroupHeader\":[{\"functionalIdentifierCode\":\"PO\",\"applicationSendersCode\":\"ODFLRETAILTEST\",\"applicationReceiversCode\":\"UNITEDTECHNO\",\"date\":\"20260311\",\"time\":\"1112\",\"groupControlNumber\":\"000000010\",\"responsibleAgencyCode\":\"X\",\"versionReleaseIndustryIdentifierCode\":\"004010\"}],\"transactionSets\":[{\"transactionSetHeader\":[{\"transactionSetIdentifierCode\":\"850\",\"transactionSetControlNumber\":\"0001\"}],\"beginningSegmentForPurchaseOrder\":[{\"transactionSetPurposeCode\":\"00\",\"purchaseOrderTypeCode\":\"SA\",\"purchaseOrderNumber\":\"PO5776275333276666\",\"date\":\"20260311\"}],\"referenceInformation\":[{\"referenceIdentificationQualifier\":\"IA\",\"referenceIdentification\":\"4783736\"},{\"referenceIdentificationQualifier\":\"DP\",\"referenceIdentification\":\"011\"}],\"FOBRelatedInstructions\":[{\"shipmentMethodOfPaymentCode\":\"DF\"}],\"salesRequirements\":[{\"salesRequirementCode\":\"N\"}],\"SAC_loop\":[{\"servicePromotionAllowanceOrChargeInformation\":[{\"allowanceOrChargeIndicatorCode\":\"C\",\"servicePromotionAllowanceOrChargeCode\":\"D240\",\"amount\":\"179.91\",\"allowanceChargePercentQualifier\":\"ZZ\",\"description\":\"Freight Charge\"}]},{\"servicePromotionAllowanceOrChargeInformation\":[{\"allowanceOrChargeIndicatorCode\":\"A\",\"servicePromotionAllowanceOrChargeCode\":\"F810\",\"amount\":\"44.9775\",\"allowanceChargePercentQualifier\":\"ZZ\",\"description\":\"Discount\"}]}],\"termsOfSaleDeferredTermsOfSale\":[{\"termsTypeCode\":\"01\",\"termsBasisDateCode\":\"2\",\"termsDiscountPercent\":\"1\",\"termsDiscountDaysDue\":\"45\",\"description\":\"Net 45 Days\"}],\"dateTimeReference\":[{\"dateTimeQualifier\":\"037\",\"date\":\"20260316\"},{\"dateTimeQualifier\":\"038\",\"date\":\"20260321\"}],\"carrierDetailsRoutingSequenceTransitTime\":[{\"routing\":\"2\"}],\"N1_loop\":[{\"partyIdentification\":[{\"entityIdentifierCode\":\"BY\",\"name\":\"Retail Integration Testing\",\"identificationCodeQualifier\":\"92\",\"identificationCode\":\"5438\"}]},{\"partyIdentification\":[{\"entityIdentifierCode\":\"ST\",\"name\":\"Retail Integration Testing\",\"identificationCodeQualifier\":\"92\",\"identificationCode\":\"5438\"}],\"partyLocation\":[{\"addressInformation\":\"4055 MAIN ST\"}],\"geographicLocation\":[{\"cityName\":\"NEW YORK\",\"stateOrProvinceCode\":\"NY\",\"postalCode\":\"10001\",\"countryCode\":\"US\"}]},{\"partyIdentification\":[{\"entityIdentifierCode\":\"BT\",\"name\":\"Retail Integration Testing\",\"identificationCodeQualifier\":\"92\",\"identificationCode\":\"5438\"}],\"partyLocation\":[{\"addressInformation\":\"4055 MAIN ST\"}],\"geographicLocation\":[{\"cityName\":\"NEW YORK\",\"stateOrProvinceCode\":\"NY\",\"postalCode\":\"10001\",\"countryCode\":\"US\"}]}],\"PO1_loop\":[{\"baselineItemData\":[{\"assignedIdentification\":\"1\",\"quantity\":\"5\",\"unitOrBasisForMeasurementCode\":\"EA\",\"unitPrice\":\"19.99\",\"productServiceIDQualifier\":\"SK\",\"productServiceID\":\"ORDERFUL-TEST-SKU-001\",\"productServiceIDQualifier1\":\"UP\",\"productServiceID1\":\"012345678001\",\"productServiceIDQualifier2\":\"UA\",\"productServiceID2\":\"012345678001\",\"productServiceIDQualifier3\":\"UC\",\"productServiceID3\":\"012345678001\",\"productServiceIDQualifier4\":\"UI\",\"productServiceID4\":\"012345678001\",\"productServiceIDQualifier5\":\"UJ\",\"productServiceID5\":\"012345678001\"}],\"PID_loop\":[{\"productItemDescription\":[{\"itemDescriptionTypeCode\":\"F\",\"productProcessCharacteristicCode\":\"08\",\"description\":\"Placeholder product for scenario testing\"}]}],\"itemPhysicalDetails\":[{\"pack\":\"1\",\"innerPack\":\"1\"}]},{\"baselineItemData\":[{\"assignedIdentification\":\"2\",\"quantity\":\"20\",\"unitOrBasisForMeasurementCode\":\"EA\",\"unitPrice\":\"19.99\",\"productServiceIDQualifier\":\"SK\",\"productServiceID\":\"ORDERFUL-TEST-SKU-002\",\"productServiceIDQualifier1\":\"UP\",\"productServiceID1\":\"012345678002\",\"productServiceIDQualifier2\":\"UA\",\"productServiceID2\":\"012345678002\",\"productServiceIDQualifier3\":\"UC\",\"productServiceID3\":\"012345678002\",\"productServiceIDQualifier4\":\"UI\",\"productServiceID4\":\"012345678002\",\"productServiceIDQualifier5\":\"UJ\",\"productServiceID5\":\"012345678002\"}],\"PID_loop\":[{\"productItemDescription\":[{\"itemDescriptionTypeCode\":\"F\",\"productProcessCharacteristicCode\":\"08\",\"description\":\"Placeholder product for scenario testing\"}]}],\"itemPhysicalDetails\":[{\"pack\":\"1\",\"innerPack\":\"1\"}]},{\"baselineItemData\":[{\"assignedIdentification\":\"3\",\"quantity\":\"5\",\"unitOrBasisForMeasurementCode\":\"EA\",\"unitPrice\":\"19.99\",\"productServiceIDQualifier\":\"SK\",\"productServiceID\":\"ORDERFUL-TEST-SKU-003\",\"productServiceIDQualifier1\":\"UP\",\"productServiceID1\":\"012345678003\",\"productServiceIDQualifier2\":\"UA\",\"productServiceID2\":\"012345678003\",\"productServiceIDQualifier3\":\"UC\",\"productServiceID3\":\"012345678003\",\"productServiceIDQualifier4\":\"UI\",\"productServiceID4\":\"012345678003\",\"productServiceIDQualifier5\":\"UJ\",\"productServiceID5\":\"012345678003\"}],\"PID_loop\":[{\"productItemDescription\":[{\"itemDescriptionTypeCode\":\"F\",\"productProcessCharacteristicCode\":\"08\",\"description\":\"Placeholder product for scenario testing\"}]}],\"itemPhysicalDetails\":[{\"pack\":\"1\",\"innerPack\":\"1\"}]},{\"baselineItemData\":[{\"assignedIdentification\":\"4\",\"quantity\":\"10\",\"unitOrBasisForMeasurementCode\":\"EA\",\"unitPrice\":\"19.99\",\"productServiceIDQualifier\":\"SK\",\"productServiceID\":\"ORDERFUL-TEST-SKU-004\",\"productServiceIDQualifier1\":\"UP\",\"productServiceID1\":\"012345678004\",\"productServiceIDQualifier2\":\"UA\",\"productServiceID2\":\"012345678004\",\"productServiceIDQualifier3\":\"UC\",\"productServiceID3\":\"012345678004\",\"productServiceIDQualifier4\":\"UI\",\"productServiceID4\":\"012345678004\",\"productServiceIDQualifier5\":\"UJ\",\"productServiceID5\":\"012345678004\"}],\"PID_loop\":[{\"productItemDescription\":[{\"itemDescriptionTypeCode\":\"F\",\"productProcessCharacteristicCode\":\"08\",\"description\":\"Placeholder product for scenario testing\"}]}],\"itemPhysicalDetails\":[{\"pack\":\"1\",\"innerPack\":\"1\"}]},{\"baselineItemData\":[{\"assignedIdentification\":\"5\",\"quantity\":\"5\",\"unitOrBasisForMeasurementCode\":\"EA\",\"unitPrice\":\"19.99\",\"productServiceIDQualifier\":\"SK\",\"productServiceID\":\"ORDERFUL-TEST-SKU-005\",\"productServiceIDQualifier1\":\"UP\",\"productServiceID1\":\"012345678005\",\"productServiceIDQualifier2\":\"UA\",\"productServiceID2\":\"012345678005\",\"productServiceIDQualifier3\":\"UC\",\"productServiceID3\":\"012345678005\",\"productServiceIDQualifier4\":\"UI\",\"productServiceID4\":\"012345678005\",\"productServiceIDQualifier5\":\"UJ\",\"productServiceID5\":\"012345678005\"}],\"PID_loop\":[{\"productItemDescription\":[{\"itemDescriptionTypeCode\":\"F\",\"productProcessCharacteristicCode\":\"08\",\"description\":\"Placeholder product for scenario testing\"}]}],\"itemPhysicalDetails\":[{\"pack\":\"1\",\"innerPack\":\"1\"}]}],\"CTT_loop\":[{\"transactionTotals\":[{\"numberOfLineItems\":\"5\",\"hashTotal\":\"45\"}]}],\"transactionSetTrailer\":[{\"numberOfIncludedSegments\":\"36\",\"transactionSetControlNumber\":\"0001\"}]}]}"
+      },
+      "adapter_name": "orderful_connector_1897324_1774864874",
+      "adapter_operation": "get_record",
+      "recipe_line_number": 2,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "code_input": {
+          "data": "{\"message_json\":\"{\\\"interchangeControlHeader\\\":[{\\\"authorizationInformationQualifier\\\":\\\"00\\\",\\\"authorizationInformation\\\":\\\"          \\\",\\\"securityInformationQualifier\\\":\\\"00\\\",\\\"securityInformation\\\":\\\"          \\\",\\\"interchangeIDQualifier\\\":\\\"ZZ\\\",\\\"interchangeSenderID\\\":\\\"ODFLRETAILTEST \\\",\\\"interchangeIDQualifier1\\\":\\\"ZZ\\\",\\\"interchangeReceiverID\\\":\\\"UNITEDTECHNO   \\\",\\\"interchangeDate\\\":\\\"260311\\\",\\\"interchangeTime\\\":\\\"2113\\\",\\\"interchangeControlStandardsIdentifier\\\":\\\"^\\\",\\\"interchangeControlVersionNumberCode\\\":\\\"00501\\\",\\\"interchangeControlNumber\\\":\\\"000000010\\\",\\\"acknowledgmentRequestedCode\\\":\\\"0\\\",\\\"interchangeUsageIndicatorCode\\\":\\\"T\\\",\\\"componentElementSeparator\\\":\\\"\\\\u003e\\\"}],\\\"functionalGroupHeader\\\":[{\\\"functionalIdentifierCode\\\":\\\"PO\\\",\\\"applicationSendersCode\\\":\\\"ODFLRETAILTEST\\\",\\\"applicationReceiversCode\\\":\\\"UNITEDTECHNO\\\",\\\"date\\\":\\\"20260311\\\",\\\"time\\\":\\\"1112\\\",\\\"groupControlNumber\\\":\\\"000000010\\\",\\\"responsibleAgencyCode\\\":\\\"X\\\",\\\"versionReleaseIndustryIdentifierCode\\\":\\\"004010\\\"}],\\\"transactionSets\\\":[{\\\"transactionSetHeader\\\":[{\\\"transactionSetIdentifierCode\\\":\\\"850\\\",\\\"transactionSetControlNumber\\\":\\\"0001\\\"}],\\\"beginningSegmentForPurchaseOrder\\\":[{\\\"transactionSetPurposeCode\\\":\\\"00\\\",\\\"purchaseOrderTypeCode\\\":\\\"SA\\\",\\\"purchaseOrderNumber\\\":\\\"PO5776275333276666\\\",\\\"date\\\":\\\"20260311\\\"}],\\\"referenceInformation\\\":[{\\\"referenceIdentificationQualifier\\\":\\\"IA\\\",\\\"referenceIdentification\\\":\\\"4783736\\\"},{\\\"referenceIdentificationQualifier\\\":\\\"DP\\\",\\\"referenceIdentification\\\":\\\"011\\\"}],\\\"FOBRelatedInstructions\\\":[{\\\"shipmentMethodOfPaymentCode\\\":\\\"DF\\\"}],\\\"salesRequirements\\\":[{\\\"salesRequirementCode\\\":\\\"N\\\"}],\\\"SAC_loop\\\":[{\\\"servicePromotionAllowanceOrChargeInformation\\\":[{\\\"allowanceOrChargeIndicatorCode\\\":\\\"C\\\",\\\"servicePromotionAllowanceOrChargeCode\\\":\\\"D240\\\",\\\"amount\\\":\\\"179.91\\\",\\\"allowanceChargePercentQualifier\\\":\\\"ZZ\\\",\\\"description\\\":\\\"Freight Charge\\\"}]},{\\\"servicePromotionAllowanceOrChargeInformation\\\":[{\\\"allowanceOrChargeIndicatorCode\\\":\\\"A\\\",\\\"servicePromotionAllowanceOrChargeCode\\\":\\\"F810\\\",\\\"amount\\\":\\\"44.9775\\\",\\\"allowanceChargePercentQualifier\\\":\\\"ZZ\\\",\\\"description\\\":\\\"Discount\\\"}]}],\\\"termsOfSaleDeferredTermsOfSale\\\":[{\\\"termsTypeCode\\\":\\\"01\\\",\\\"termsBasisDateCode\\\":\\\"2\\\",\\\"termsDiscountPercent\\\":\\\"1\\\",\\\"termsDiscountDaysDue\\\":\\\"45\\\",\\\"description\\\":\\\"Net 45 Days\\\"}],\\\"dateTimeReference\\\":[{\\\"dateTimeQualifier\\\":\\\"037\\\",\\\"date\\\":\\\"20260316\\\"},{\\\"dateTimeQualifier\\\":\\\"038\\\",\\\"date\\\":\\\"20260321\\\"}],\\\"carrierDetailsRoutingSequenceTransitTime\\\":[{\\\"routing\\\":\\\"2\\\"}],\\\"N1_loop\\\":[{\\\"partyIdentification\\\":[{\\\"entityIdentifierCode\\\":\\\"BY\\\",\\\"name\\\":\\\"Retail Integration Testing\\\",\\\"identificationCodeQualifier\\\":\\\"92\\\",\\\"identificationCode\\\":\\\"5438\\\"}]},{\\\"partyIdentification\\\":[{\\\"entityIdentifierCode\\\":\\\"ST\\\",\\\"name\\\":\\\"Retail Integration Testing\\\",\\\"identificationCodeQualifier\\\":\\\"92\\\",\\\"identificationCode\\\":\\\"5438\\\"}],\\\"partyLocation\\\":[{\\\"addressInformation\\\":\\\"4055 MAIN ST\\\"}],\\\"geographicLocation\\\":[{\\\"cityName\\\":\\\"NEW YORK\\\",\\\"stateOrProvinceCode\\\":\\\"NY\\\",\\\"postalCode\\\":\\\"10001\\\",\\\"countryCode\\\":\\\"US\\\"}]},{\\\"partyIdentification\\\":[{\\\"entityIdentifierCode\\\":\\\"BT\\\",\\\"name\\\":\\\"Retail Integration Testing\\\",\\\"identificationCodeQualifier\\\":\\\"92\\\",\\\"identificationCode\\\":\\\"5438\\\"}],\\\"partyLocation\\\":[{\\\"addressInformation\\\":\\\"4055 MAIN ST\\\"}],\\\"geographicLocation\\\":[{\\\"cityName\\\":\\\"NEW YORK\\\",\\\"stateOrProvinceCode\\\":\\\"NY\\\",\\\"postalCode\\\":\\\"10001\\\",\\\"countryCode\\\":\\\"US\\\"}]}],\\\"PO1_loop\\\":[{\\\"baselineItemData\\\":[{\\\"assignedIdentification\\\":\\\"1\\\",\\\"quantity\\\":\\\"5\\\",\\\"unitOrBasisForMeasurementCode\\\":\\\"EA\\\",\\\"unitPrice\\\":\\\"19.99\\\",\\\"productServiceIDQualifier\\\":\\\"SK\\\",\\\"productServiceID\\\":\\\"ORDERFUL-TEST-SKU-001\\\",\\\"productServiceIDQualifier1\\\":\\\"UP\\\",\\\"productServiceID1\\\":\\\"012345678001\\\",\\\"productServiceIDQualifier2\\\":\\\"UA\\\",\\\"productServiceID2\\\":\\\"012345678001\\\",\\\"productServiceIDQualifier3\\\":\\\"UC\\\",\\\"productServiceID3\\\":\\\"012345678001\\\",\\\"productServiceIDQualifier4\\\":\\\"UI\\\",\\\"productServiceID4\\\":\\\"012345678001\\\",\\\"productServiceIDQualifier5\\\":\\\"UJ\\\",\\\"productServiceID5\\\":\\\"012345678001\\\"}],\\\"PID_loop\\\":[{\\\"productItemDescription\\\":[{\\\"itemDescriptionTypeCode\\\":\\\"F\\\",\\\"productProcessCharacteristicCode\\\":\\\"08\\\",\\\"description\\\":\\\"Placeholder product for scenario testing\\\"}]}],\\\"itemPhysicalDetails\\\":[{\\\"pack\\\":\\\"1\\\",\\\"innerPack\\\":\\\"1\\\"}]},{\\\"baselineItemData\\\":[{\\\"assignedIdentification\\\":\\\"2\\\",\\\"quantity\\\":\\\"20\\\",\\\"unitOrBasisForMeasurementCode\\\":\\\"EA\\\",\\\"unitPrice\\\":\\\"19.99\\\",\\\"productServiceIDQualifier\\\":\\\"SK\\\",\\\"productServiceID\\\":\\\"ORDERFUL-TEST-SKU-002\\\",\\\"productServiceIDQualifier1\\\":\\\"UP\\\",\\\"productServiceID1\\\":\\\"012345678002\\\",\\\"productServiceIDQualifier2\\\":\\\"UA\\\",\\\"productServiceID2\\\":\\\"012345678002\\\",\\\"productServiceIDQualifier3\\\":\\\"UC\\\",\\\"productServiceID3\\\":\\\"012345678002\\\",\\\"productServiceIDQualifier4\\\":\\\"UI\\\",\\\"productServiceID4\\\":\\\"012345678002\\\",\\\"productServiceIDQualifier5\\\":\\\"UJ\\\",\\\"productServiceID5\\\":\\\"012345678002\\\"}],\\\"PID_loop\\\":[{\\\"productItemDescription\\\":[{\\"
+        },
+        "name": "Build EDI 850 XML"
+      },
+      "output": {
+        "output": "{\"xml\":\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<Order>\\n  <OrderHeader>\\n    <OrderNumber>PO5776275333276666</OrderNumber>\\n    <OrderType>SA</OrderType>\\n    <OrderDate>2026-03-11</OrderDate>\\n    <RequestedShipDate>2026-03-16</RequestedShipDate>\\n    <Currency>USD</Currency>\\n    <PaymentTerms>Net 45 Days</PaymentTerms>\\n  </OrderHeader>\\n  <CustomerDetails>\\n    <SoldTo>\\n      <CustomerID>5438</CustomerID>\\n      <CompanyName>Retail Integration Testing</CompanyName>\\n      <AddressLine1></AddressLine1>\\n      <City></City>\\n      <State></State>\\n      <PostalCode></PostalCode>\\n      <Country></Country>\\n      <ContactName></ContactName>\\n      <Email></Email>\\n      <Phone></Phone>\\n    </SoldTo>\\n    <ShipTo>\\n      <FacilityID>5438</FacilityID>\\n      <CompanyName>Retail Integration Testing</CompanyName>\\n      <AddressLine1>4055 MAIN ST</AddressLine1>\\n      <AddressLine2></AddressLine2>\\n      <City>NEW YORK</City>\\n      <State>NY</State>\\n      <PostalCode>10001</PostalCode>\\n      <Country>US</Country>\\n      <ContactName></ContactName>\\n      <Email></Email>\\n      <Phone></Phone>\\n    </ShipTo>\\n  </CustomerDetails>\\n  <OrderItems>\\n    <Item>\\n      <LineNumber>1</LineNumber>\\n      <SKU>ORDERFUL-TEST-SKU-001</SKU>\\n      <VendorPartNumber></VendorPartNumber>\\n      <UPC>012345678001</UPC>\\n      <Description></Description>\\n      <Quantity>5</Quantity>\\n      <UnitOfMeasure>EA</UnitOfMeasure>\\n      <UnitPrice>19.99</UnitPrice>\\n      <LineTotal>99.95</LineTotal>\\n    </Item>\\n    <Item>\\n      <LineNumber>2</LineNumber>\\n      <SKU>ORDERFUL-TEST-SKU-002</SKU>\\n      <VendorPartNumber></VendorPartNumber>\\n      <UPC>012345678002</UPC>\\n      <Description></Description>\\n      <Quantity>20</Quantity>\\n      <UnitOfMeasure>EA</UnitOfMeasure>\\n      <UnitPrice>19.99</UnitPrice>\\n      <LineTotal>399.80</LineTotal>\\n    </Item>\\n    <Item>\\n      <LineNumber>3</LineNumber>\\n      <SKU>ORDERFUL-TEST-SKU-003</SKU>\\n      <VendorPartNumber></VendorPartNumber>\\n      <UPC>012345678003</UPC>\\n      <Description></Description>\\n      <Quantity>5</Quantity>\\n      <UnitOfMeasure>EA</UnitOfMeasure>\\n      <UnitPrice>19.99</UnitPrice>\\n      <LineTotal>99.95</LineTotal>\\n    </Item>\\n    <Item>\\n      <LineNumber>4</LineNumber>\\n      <SKU>ORDERFUL-TEST-SKU-004</SKU>\\n      <VendorPartNumber></VendorPartNumber>\\n      <UPC>012345678004</UPC>\\n      <Description></Description>\\n      <Quantity>10</Quantity>\\n      <UnitOfMeasure>EA</UnitOfMeasure>\\n      <UnitPrice>19.99</UnitPrice>\\n      <LineTotal>199.90</LineTotal>\\n    </Item>\\n    <Item>\\n      <LineNumber>5</LineNumber>\\n      <SKU>ORDERFUL-TEST-SKU-005</SKU>\\n      <VendorPartNumber></VendorPartNumber>\\n      <UPC>012345678005</UPC>\\n      <Description></Description>\\n      <Quantity>5</Quantity>\\n      <UnitOfMeasure>EA</UnitOfMeasure>\\n      <UnitPrice>19.99</UnitPrice>\\n      <LineTotal>99.95</LineTotal>\\n    </Item>\\n  </OrderItems>\\n  <OrderSummary>\\n    <TotalItemCount>5</TotalItemCount>\\n    <TotalQuantity>45</TotalQuantity>\\n    <Subtotal>899.55</Subtotal>\\n    <TaxAmount>0.00</TaxAmount>\\n    <ShippingAmount>179.91</ShippingAmount>\\n    <GrandTotal>1079.46</GrandTotal>\\n  </OrderSummary>\\n</Order>\",\"raw_json\":\"{\\\"interchangeControlHeader\\\":[{\\\"authorizationInformationQualifier\\\":\\\"00\\\",\\\"authorizationInformation\\\":\\\"          \\\",\\\"securityInformationQualifier\\\":\\\"00\\\",\\\"securityInformation\\\":\\\"          \\\",\\\"interchangeIDQualifier\\\":\\\"ZZ\\\",\\\"interchangeSenderID\\\":\\\"ODFLRETAILTEST \\\",\\\"interchangeIDQualifier1\\\":\\\"ZZ\\\",\\\"interchangeReceiverID\\\":\\\"UNITEDTECHNO   \\\",\\\"interchangeDate\\\":\\\"260311\\\",\\\"interchangeTime\\\":\\\"2113\\\",\\\"interchangeControlStandardsIdentifier\\\":\\\"^\\\",\\\"interchangeControlVersionNumberCode\\\":\\\"00501\\\",\\\"interchangeControlNumber\\\":\\\"000000010\\\",\\\"acknowledgmentRequestedCode\\\":\\\"0\\\",\\\"interchangeUsageIndicatorCode\\\":\\\"T\\\",\\\"componentElementSeparator\\\":\\\"\\\\u003e\\\"}],\\\"functionalGroupHeader\\\":[{\\\"functionalIdentifierCode\\\":\\\"PO\\\",\\\"applicationSendersCode\\\":\\\"ODFLRETAILTEST\\\",\\\"applicationReceiversCode\\\":\\\"UNITEDTECHNO\\\",\\\"date\\\":\\\"20260311\\\",\\\"time\\\":\\\"1112\\\",\\\"groupControlNumber\\\":\\\"000000010\\\",\\\"responsibleAgencyCode\\\":\\\"X\\\",\\\"versionReleaseIndustryIdentifierCode\\\":\\\"004010\\\"}],\\\"transactionSets\\\":[{\\\"transactionSetHeader\\\":[{\\\"transactionSetIdentifierCode\\\":\\\"850\\\",\\\"transactionSetControlNumber\\\":\\\"0001\\\"}],\\\"beginningSegmentForPurchaseOrder\\\":[{\\\"transactionSetPurposeCode\\\":\\\"00\\\",\\\"purchaseOrderTypeCode\\\":\\\"SA\\\",\\\"purchaseOrderNumber\\\":\\\"PO5776275333276666\\\",\\\"date\\\":\\\"20260311\\\"}],\\\"referenceInformation\\\":[{\\\"referenceIdentificationQualifier\\\":\\\"IA\\\",\\\"referenceIdentification\\\":\\\"4783736\\\"},{\\\"referenceIdentificationQualifier\\\":\\\"DP\\\",\\\"referenceIdentification\\\":\\\"011\\\"}],\\\"FOBRelatedInstructions\\\":[{\\\"shipmentMethodOfPaymentCode\\\":\\\"DF\\\"}],\\\"salesRequirements\\\":[{\\\"salesRequirementCode\\\":\\\"N\\\"}],\\\"SAC_loop\\\":[{\\\"servicePromotionAllowanceOrChargeInformation\\\":[{\\\"allowanceOrChargeIndicatorCode\\\":\\\"C\\\",\\\"serviceProm"
+      },
+      "adapter_name": "js_eval",
+      "adapter_operation": "invoke_custom_js_code",
+      "recipe_line_number": 3,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "content": "3116 bytes",
+        "csv_delimiter": "comma",
+        "csv_has_header": "true",
+        "csv_quote": "double",
+        "encoding": "UTF-8",
+        "file_name": "EDI850_861041851.xml",
+        "file_path": "EDI/Inbound",
+        "is_csv_file": "false",
+        "overwrite": "true",
+        "schema_type": "auto"
+      },
+      "output": {
+        "name": "EDI850_861041851.xml",
+        "path": "/EDI/Inbound/EDI850_861041851.xml",
+        "size": 3116
+      },
+      "adapter_name": "workato_files",
+      "adapter_operation": "store_file",
+      "recipe_line_number": 4,
+      "mask_data": false
+    },
+    {
+      "input": {},
+      "output": {
+        "condition": true
+      },
+      "adapter_name": "misc",
+      "adapter_operation": "if",
+      "recipe_line_number": 5,
+      "mask_data": false
+    },
+    {
+      "input": {
+        "deliveryId": "006ae0f0-3f8b-453a-a0bf-713543e78e27",
+        "note": "approve"
+      },
+      "output": {},
+      "error": "400 Bad Request: {\"type\":\"argumentError\",\"ref\":\"deliveryId\",\"message\":\"The delivery status is DELIVERED and can't be confirmed again.\"} at line: 570",
+      "adapter_name": "orderful_connector_1897324_1774864874",
+      "adapter_operation": "approve_delivery",
+      "recipe_line_number": 6,
+      "mask_data": false
+    }
+  ],
+  "context": {
+    "user_id": 1897324,
+    "user_name": "United Techno Account",
+    "user_email": "workato@unitedtechno.com",
+    "recipe_id": 82858874,
+    "recipe_url": "https://app.workato.com/recipes/82858874",
+    "recipe_name": "Orderful EDI 850 to XML - Save to Disk",
+    "recipe_path": "Home/EDI",
+    "is_test": true,
+    "user_external_id": null
+  },
+  "job_url": "https://app.workato.com/recipes/82858874/job/j-Abr9NLed-poPHTr-CD?child_job_id=j-AbrBGNTG-mGCtRa-CD",
+  "root_job_id": "",
+  "root_recipe_id": 0
+}
